@@ -1,0 +1,27 @@
+.lessonCard {
+  min-height: 12rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lessonCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1),
+    0 4px 10px -2px rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.content {
+  color: #374151;
+  line-height: 1.6;
+}

@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  max-width: 48rem;
+  margin: 4rem auto;
+  padding: 0 0.5rem;
+}
+
+.errorCard {
+  border-color: #fecaca;
+  background-color: #fef2f2;
+}
+
+.errorMessage {
+  color: #dc2626;
+  text-align: center;
+}

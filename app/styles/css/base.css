@@ -1,0 +1,183 @@
+/* リキッドレイアウト対応 */
+
+/* デザインカンプのinnerの幅を指定（リキッドレイアウト用） */
+:root {
+  --inner: 1080px;
+}
+
+/* Tailwind CSSと競合しないように、フォントサイズ設定を調整 */
+/* スマホファースト - Tailwindの設定を尊重 */
+/* html {
+  font-size: 16px;
+} */
+
+/* レスポンシブ設定をTailwindのブレークポイントに合わせて調整 */
+@media (max-width: 375px) {
+  /* 必要に応じてカスタムスタイル */
+}
+
+@media (min-width: 768px) {
+  /* 必要に応じてカスタムスタイル */
+}
+
+/* inner~max-screen */
+@media (min-width: 1080px) {
+  /* 必要に応じてカスタムスタイル */
+}
+
+/* Safari対策 */
+a[href^="tel"] {
+  text-decoration: none;
+}
+
+a {
+  color: inherit;
+  -webkit-tap-highlight-color: transparent; /* 強調をなくす */
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img,
+svg {
+  vertical-align: middle;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Tailwind CSSと競合しないように、clamp設定を調整 */
+/* *,
+::before,
+::after {
+  --clamp-root-font-size: 16;
+  --clamp-slope: calc((var(--clamp-max) - var(--clamp-min)) / (var(--clamp-viewport-max) - var(--clamp-viewport-min)));
+  --clamp-y-axis-intersection: calc(var(--clamp-min) - (var(--clamp-slope) * var(--clamp-viewport-min)));
+  --clamp-preffered-value: calc(
+    var(--clamp-y-axis-intersection) * (1rem / var(--clamp-root-font-size)) + (var(--clamp-slope) * 100vi)
+  );
+  --clamp: clamp(
+    calc(var(--clamp-min) * (1rem / var(--clamp-root-font-size))),
+    var(--clamp-preffered-value),
+    calc(var(--clamp-max) * (1rem / var(--clamp-root-font-size)))
+  );
+
+  font-size: var(--clamp);
+} */
+
+/* bodyにデフォルト値を設定する - Tailwindの設定を尊重 */
+/* body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  --clamp-viewport-min: 375;
+  --clamp-viewport-max: 1200;
+  --clamp-min: 14;
+  --clamp-max: 16;
+} */
+
+/* 👍使い方 */
+/* .title {
+  --clamp-min: 20;
+  --clamp-max: 24;
+} */
+
+[data-device="pc"] {
+  /* pcのみ表示 */
+  display: block;
+}
+
+@media (max-width: 767px) {
+  [data-device="pc"] {
+    display: none;
+  }
+}
+
+[data-device="sp"] {
+  /* spのみ表示 */
+  display: none;
+}
+
+@media (max-width: 767px) {
+  [data-device="sp"] {
+    display: block;
+  }
+}
+
+/* ユーティリティクラス */
+.inner {
+  max-width: var(--inner);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (max-width: 767px) {
+  .inner {
+    padding: 0 0.5rem;
+  }
+}
+
+/* レスポンシブ画像 */
+.responsive-img {
+  width: 100%;
+  height: auto;
+}
+
+/* フレックスボックスユーティリティ */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* グリッドユーティリティ */
+.grid-center {
+  display: grid;
+  place-items: center;
+}
+
+/* テキストユーティリティ */
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* アニメーション */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+} 
