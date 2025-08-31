@@ -3,7 +3,6 @@ import LessonCard from "./components/ui/lesson-card/page";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import Link from "next/link";
-import "./styles/css/home.css";
 import { Database } from "./lib/database.types";
 
 // レッスンを取得する関数
@@ -16,9 +15,9 @@ import { Database } from "./lib/database.types";
 const getAllLessons = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
   const { data: lessons } = await supabase.from("lesson").select("*");
-  return lessons;
+  return lessons ?? [];
 }
-
+  
 // ホームページ
 export default async function Home() {
 
@@ -27,7 +26,7 @@ export default async function Home() {
   return (
     <main className="w-full max-w-3xl mx-auto my-16 px-2 home-container">
       <div className="grid gap-6">
-        {lessons?.map((lesson) => (
+        {lessons.map((lesson: any) => (
           <LessonCard key={lesson.id} lesson={lesson} />
         ))}
       </div>
