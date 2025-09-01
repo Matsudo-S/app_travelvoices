@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom'
+import Stripe from "stripe";
 
 // Jest DOM matchers for TypeScript
 declare global {
@@ -60,4 +61,13 @@ export interface PaginatedResponse<T> {
   page: number;
   limit: number;
   totalPages: number;
+}
+
+// pricingページのplanの型定義
+export interface Plan {
+  id: string;
+  name: string;
+  price: string | null;
+  currency: string;
+  interval: Stripe.Price.Recurring.Interval | null;
 }

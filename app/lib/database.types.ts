@@ -1,11 +1,3 @@
-export type Json =
-  | string
-  | number
-  | boolean
-  | null
-  | { [key: string]: Json | undefined }
-  | Json[]
-
 export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
@@ -32,6 +24,59 @@ export type Database = {
           description?: string | null
           id?: number
           title?: string | null
+        }
+        Relationships: []
+      }
+      premium_content: {
+        Row: {
+          created_at: string
+          id: number
+          video_url: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          video_url?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          video_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "premium_content_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "lesson"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profile: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          interval: string | null
+          is_subscription: boolean | null
+          stripe_customer: string | null
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          interval?: string | null
+          is_subscription?: boolean | null
+          stripe_customer?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          interval?: string | null
+          is_subscription?: boolean | null
+          stripe_customer?: string | null
         }
         Relationships: []
       }
