@@ -1,8 +1,6 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./components/ui/card/page";
-import LessonCard from "./components/ui/lesson-card/page";
+import LessonCard from "./components/ui/lesson-card/lesson-card";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import Link from "next/link";
 import { Database } from "./lib/database.types";
 
 // レッスンを取得する関数
@@ -12,7 +10,7 @@ import { Database } from "./lib/database.types";
 // - fetch(url, {cache: 'no-store'}): SSR（毎回サーバーでレンダリング）
 // - fetch(url, {next: {revalidate: 3600}}): ISR（Incremental Static Regeneration）
 // cookieを使うとsupabaseではSSRになる（npm run buildになるとわかる）
-const getAllLessons = async () => {
+const getAllLessons = async (): Promise<Database['public']['Tables']['lesson']['Row'][]> => {
   const supabase = createServerComponentClient<Database>({ cookies });
   const { data: lessons } = await supabase.from("lesson").select("*");
   return lessons ?? [];
@@ -26,7 +24,7 @@ export default async function Home() {
   return (
     <main className="w-full max-w-3xl mx-auto my-16 px-2 home-container">
       <div className="grid gap-6">
-        {lessons.map((lesson: any) => (
+        {lessons.map((lesson) => (
           <LessonCard key={lesson.id} lesson={lesson} />
         ))}
       </div>

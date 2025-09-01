@@ -15,7 +15,7 @@ declare global {
       toBeEmpty(): R
       toBeEmptyDOMElement(): R
       toHaveFocus(): R
-      toHaveFormValues(expectedValues: Record<string, any>): R
+      toHaveFormValues(expectedValues: Record<string, unknown>): R
       toHaveValue(value: string | string[] | number): R
       toHaveDisplayValue(value: string | RegExp | (string | RegExp)[]): R
       toBeChecked(): R

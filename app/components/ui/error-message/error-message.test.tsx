@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ErrorMessage from './page';
+import ErrorMessage from './error-message';
 
 describe('ErrorMessage', () => {
   it('エラーメッセージを表示する', () => {

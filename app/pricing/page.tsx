@@ -61,7 +61,7 @@ const PricingPage = async () => {
   return (
     <div className={styles['pricing-container']}>
       <div className={styles['pricing-grid']}>
-        {plans.map((plan: any) => (
+        {plans.map((plan: Plan) => (
           <div key={plan.id} className={styles['pricing-card']}>
             <h2 className={styles['pricing-title']}>
               {plan.name} プラン

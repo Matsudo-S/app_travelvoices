@@ -3,14 +3,14 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { Database } from '../../lib/database.types';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../components/ui/card/page';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../components/ui/card/card';
 import { YouTubeEmbed } from "@next/third-parties/google";
-import Button from '../../components/ui/button/page';
+import Button from '../../components/ui/button/button';
 import styles from './lesson-detail.module.css';
 import { extractYouTubeVideoId } from '../../lib/extractYoutubeVideoId';
 
 // singleをつけると配列でなくオブジェクトとして取得できる
-const getDetailLessonById = async (id: string, supabase: ReturnType<typeof createServerComponentClient<Database>>): Promise<any> => {
+const getDetailLessonById = async (id: string, supabase: ReturnType<typeof createServerComponentClient<Database>>): Promise<Database['public']['Tables']['lesson']['Row'] | null> => {
   const { data: lesson, error } = await supabase
     .from("lesson")
     .select("*")
@@ -24,7 +24,7 @@ const getDetailLessonById = async (id: string, supabase: ReturnType<typeof creat
   return lesson;
 }
 
-const getPremiumContent = async (id: string, supabase: ReturnType<typeof createServerComponentClient<Database>>): Promise<any> => {
+const getPremiumContent = async (id: string, supabase: ReturnType<typeof createServerComponentClient<Database>>): Promise<Database['public']['Tables']['premium_content']['Row'] | null> => {
   const { data: video, error } = await supabase
     .from("premium_content")
     .select("video_url")
@@ -38,15 +38,16 @@ const getPremiumContent = async (id: string, supabase: ReturnType<typeof createS
   return video;
 }
 // レッスン詳細ページ paramsを入れることで、idが取得できる
-const LessonDetailPage = async ({ params }: { params: { id: string } }) => {
+const LessonDetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const resolvedParams = await params;
   const supabase = createServerComponentClient<Database>({ cookies });
   // lesson, awaitを並列処理にする
   const [lesson, video] = await Promise.all([
-    await getDetailLessonById(params.id, supabase),
-    await getPremiumContent(params.id, supabase),
+    await getDetailLessonById(resolvedParams.id, supabase),
+    await getPremiumContent(resolvedParams.id, supabase),
   ]);
 
-  const videoId = extractYouTubeVideoId(video?.video_url) as string;
+  const videoId = video?.video_url ? extractYouTubeVideoId(video.video_url) : null;
 
   console.log(video);
   if (!lesson) {
@@ -69,7 +70,7 @@ const LessonDetailPage = async ({ params }: { params: { id: string } }) => {
             </CardTitle>
             {video?.video_url && (
               <CardDescription className={styles['lesson-description']}>
-                <YouTubeEmbed videoid={videoId} height={300} />
+                {videoId && <YouTubeEmbed videoid={videoId} height={300} />}
               </CardDescription>
             )}
           </CardHeader>

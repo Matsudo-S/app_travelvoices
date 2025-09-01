@@ -1,12 +1,12 @@
 'use client'
 import React from 'react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
-import { useRouter } from 'next/navigation'
+
 import { useToast } from '@/hooks/useToast'
 import Toast from '@/components/ui/toast/toast'
 
 const LoginButton = () => {
-  const router = useRouter();
+
   const supabase = createClientComponentClient();
   const { toast, showToast } = useToast();
 

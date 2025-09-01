@@ -98,6 +98,58 @@ import "./styles/globals.css";
 ```
 
 - `reset.css` でブラウザ差異をリセット（例: `a { text-decoration: none; }` など）
+
+## 🚀 GitHub Actions + Vercel 自動デプロイ設定
+
+### 1. Vercel プロジェクトの初期設定
+
+```bash
+# Vercel CLIをインストール（未インストールの場合）
+npm install -g vercel
+
+# プロジェクトをVercelにリンク
+vercel
+
+# 設定情報を取得
+./scripts/setup-vercel.sh
+```
+
+### 2. GitHub Secrets 設定
+
+GitHub リポジトリの Settings → Secrets and variables → Actions で以下を設定：
+
+#### Vercel 設定
+
+- `VERCEL_TOKEN`: Vercel アカウントトークン
+- `VERCEL_ORG_ID`: 組織 ID
+- `VERCEL_PROJECT_ID`: プロジェクト ID
+
+#### 環境変数
+
+- `NEXT_PUBLIC_BASE_URL`: 本番 URL（例: https://your-app.vercel.app）
+- `STRIPE_SECRET_KEY`: Stripe 本番用シークレットキー
+- `STRIPE_PUBLISHABLE_KEY`: Stripe 本番用パブリックキー
+- `SUPABASE_URL`: Supabase プロジェクト URL
+- `SUPABASE_ANON_KEY`: Supabase 匿名キー
+- `STRIPE_SIGNING_SECRET`: Stripe Webhook 署名シークレット
+
+### 3. 自動デプロイの動作
+
+- `main`ブランチへの push → 本番環境に自動デプロイ
+- `main`ブランチへの PR → プレビュー環境にデプロイ
+
+### 4. デプロイ確認
+
+```bash
+# コードを変更してpush
+git add .
+git commit -m "Update feature"
+git push origin main
+
+# GitHub Actionsでデプロイ状況を確認
+# https://github.com/YOUR_USERNAME/YOUR_REPO/actions
+```
+
 - その後 `base.css` と `global.css` で共通の見た目を定義
 - 最後に `globals.css` で Tailwind や CSS 変数をセット
 

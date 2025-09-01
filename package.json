@@ -9,7 +9,9 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "db:generate": "npx supabase gen types typescript --project-id 'jrzswjkqiffatgpiscjk' > app/lib/database.types.ts"
+    "db:generate": "npx supabase gen types typescript --project-id 'jrzswjkqiffatgpiscjk' > app/lib/database.types.ts",
+    "vercel:setup": "./scripts/setup-vercel.sh",
+    "vercel:deploy": "vercel --prod"
   },
   "dependencies": {
     "@next/third-parties": "^15.5.2",

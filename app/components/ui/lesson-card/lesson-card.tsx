@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../card/page";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../card/card";
 import { Lesson } from "../../../types";
 import styles from "./lesson-card.module.css";
 

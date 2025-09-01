@@ -10,7 +10,7 @@ interface ButtonProps {
   className?: string;
 }
 
-export default function Button({ 
+function Button({ 
   children, 
   href, 
   onClick, 
@@ -32,4 +32,6 @@ export default function Button({
       {children}
     </button>
   );
-}
+};
+
+export default Button;

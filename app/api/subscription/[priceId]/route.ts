@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import initStripe from "stripe";
+import initStripe, { Stripe } from "stripe";
 
 export async function GET(
   req: NextRequest,
@@ -47,7 +47,7 @@ export async function GET(
   
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL as string;
   // チェックアウトセッションの作成オプション
-  const sessionOptions: any = {
+  const sessionOptions: Stripe.Checkout.SessionCreateParams = {
     mode: "subscription",
     payment_method_types: ["card"],
     line_items: [{

@@ -1,4 +1,4 @@
-import { Card, CardContent } from "../card/page";
+import { Card, CardContent } from "../card/card";
 import styles from "./error-message.module.css";
 
 interface ErrorMessageProps {
