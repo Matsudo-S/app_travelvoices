@@ -33,7 +33,9 @@ export default function RootLayout({
       >
         <AuthProvider />
         <Header />
-        {children}
+        <main className="page-container">
+          {children}
+        </main>
       </body>
     </html>
   );

@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+/* リンク要素のカーソル設定 */
+a,
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
 /* bodyの基本設定 - Tailwindの設定を尊重 */
 body {
   margin: 0;
@@ -20,6 +27,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* ページコンテナ - Header以外の部分の左右余白 */
+.page-container {
+  padding: 0 15px; /* SPデフォルト */
+}
+
+/* PCサイズでの余白調整 */
+@media (min-width: 768px) {
+  .page-container {
+    padding: 0 25px;
+  }
 }
 
 /* コンテナクラス */
