@@ -45,6 +45,7 @@ export async function GET(
   const stripe = new initStripe(process.env.STRIPE_SECRET_KEY!);
   console.log('Stripe initialized');
   
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL as string;
   // チェックアウトセッションの作成オプション
   const sessionOptions: any = {
     mode: "subscription",
@@ -52,8 +53,8 @@ export async function GET(
     line_items: [{
       price: resolvedParams.priceId, quantity: 1,
     }],
-    success_url: `http://localhost:3000/payment/success`,
-    cancel_url: `http://localhost:3000/payment/cancelled`,
+    success_url: `${baseUrl}/payment/success`,
+    cancel_url: `${baseUrl}/payment/cancelled`,
   };
 
   // 顧客IDが存在する場合は追加
