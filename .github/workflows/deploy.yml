@@ -36,6 +36,10 @@ jobs:
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
+        env:
+          VERCEL_CLI_VERSION: latest
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-args: "--prod --yes"
+          vercel-args: "--prod"
+          github-comment: false
+          github-deployment: false
