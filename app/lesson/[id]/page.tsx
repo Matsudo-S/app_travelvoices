@@ -55,7 +55,7 @@ const LessonDetailPage = async ({ params }: { params: Promise<{ id: string }> })
   }
 
   return (
-    <main className={styles['lesson-detail-container']}>
+    <main className={`page-container ${styles['lesson-detail-container']}`}>
       <div className={styles['lesson-detail-content']}>
         <div className={styles['back-link']}>
           <Button href="/" variant="back">

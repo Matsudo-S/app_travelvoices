@@ -1,4 +1,4 @@
-/* Global styles - Tailwind CSSと競合しないように調整 */
+/* Global styles */
 
 /* 基本的なボックスモデル設定 */
 * {
@@ -12,7 +12,7 @@ button,
   cursor: pointer;
 }
 
-/* bodyの基本設定 - Tailwindの設定を尊重 */
+/* bodyの基本設定 */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -48,7 +48,7 @@ code {
   padding: 0 1rem;
 }
 
-/* ボタンスタイル - Tailwindのクラスと競合しないように */
+/* ボタンスタイル */
 .btn {
   display: inline-block;
   padding: 0.5rem 1rem;

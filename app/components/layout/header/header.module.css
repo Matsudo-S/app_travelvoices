@@ -1,107 +1,172 @@
 .header {
-  width: 100%;
-  border-bottom: 1px solid #e5e7eb;
-  background-color: white;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   height: 80px;
-  margin-bottom: 60px;
+  background: rgba(0, 0, 0, 0.68);
+  position: absolute;
+  z-index: 900;
+  top: 0;
+  right: 0;
+  left: 0;
+  transition: all 0.3s ease;
 }
 
-.header-container {
-  max-width: 1280px;
-  margin: 0 auto;
+.header.is-fixed {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.68);
+}
+
+/* MV表示時（スクロール前）は背景透過なし */
+.header:not(.is-fixed) {
+  background: rgba(0, 0, 0, 1);
+}
+
+/* デスクトップでの高さ調整 */
+@media (min-width: 768px) {
+  .header {
+    height: 90px;
+  }
+}
+
+.header__inner {
   height: inherit;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background-color: beige;
 }
 
-.header-left {
-  height: inherit;
+.header__logo {
+  cursor: pointer;
   display: flex;
+  height: inherit;
+  width: 100%;
+  z-index: 9999;
+  object-fit: contain;
   align-items: center;
   justify-content: center;
-}
-
-.header-logo {
-  height: inherit;
-  position: relative;
-}
-
-.header-logo span {
-  display: flex;
-  align-items: center;
-  height: inherit;
+  color: white;
   font-size: 1.25rem;
   font-weight: 700;
-  color: #111827;
-  gap: 0.5rem;
-  transition: 0.3s all ease;
-  padding: 0 0.5rem;
+  text-transform: capitalize;
+  transition: all 0.3s;
+  padding: 0 50px;
+  max-width: 80px;
 }
 
-.header-logo span:hover {
+.header__logo:hover {
   opacity: 0.7;
 }
 
-/* ロゴの下線アニメーション */
-.header-logo::after {
-  content: "";
-  position: absolute;
-  bottom: 25px; /* 文字の下に配置 */
-  left: 50%;
-  width: 0;
-  height: 1px;
-  background-color: rgb(129, 138, 155);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
-
-.header-logo:hover::after {
-  width: 100%;
-}
-
-.header-right {
-  height: inherit;
+.header__nav-items {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0 0.5rem;
+  height: inherit;
+  gap: 20px;
 }
 
-.header-link {
-  padding-left: 10px;
-  padding-right: 10px;
+.header__link {
   height: inherit;
+  white-space: nowrap;
   position: relative;
 }
 
-.header-link span {
+.header__link span {
   height: inherit;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  transition: 0.3s all ease;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  line-height: 1;
+  transition: opacity 0.3s ease;
 }
 
-.header-link span:hover {
+.header__link span:hover {
   opacity: 0.7;
 }
 
-/* リンクの下線アニメーション */
-.header-link::after {
-  content: "";
-  position: absolute;
-  bottom: 25px; /* 文字の下に配置 */
-  left: 50%;
-  width: 0;
-  height: 1px;
-  background-color: rgb(129, 138, 155);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
+/* 2行表示のスタイル */
+.header__item-main {
+  color: white;
+  font-size: 18px;
+  line-height: 1;
+  text-transform: capitalize;
 }
 
-.header-link:hover::after {
+.header__item-sub {
+  color: white;
+  font-size: 12px;
+  line-height: 1.5;
+  padding-top: 4px;
+}
+
+/* アンダーライン付きのリンクスタイル */
+.header__link--underline {
+  position: relative;
+}
+
+.header__link--underline::after {
+  background: white;
+  bottom: 20px;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  transition: transform 0.3s, opacity 0.3s;
   width: 100%;
+  opacity: 0;
+}
+
+.header__link--underline:hover::after {
+  transform: scale(1, 1);
+  transform-origin: center top;
+  opacity: 0.7;
+}
+
+.header__link--underline:not(:hover)::after {
+  transform: scale(0, 1);
+  transform-origin: center top;
+  opacity: 0;
+}
+
+.header__auth-button {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.header__hamburger {
+  height: inherit;
+  padding: 0 20px;
+  position: relative;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.header__hamburger::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 2px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ハンバーガーメニューがアクティブの時は縦線を非表示 */
+.header__hamburger.is-active::before {
+  display: none;
+}
+
+/* モバイル（768px以下）でナビゲーションリンクと縦線を非表示 */
+@media (max-width: 768px) {
+  .header__link {
+    display: none;
+  }
+
+  .header__nav-items {
+    gap: 0px;
+  }
+
+  .header__hamburger::before {
+    display: none;
+  }
 }

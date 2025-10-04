@@ -1,0 +1,70 @@
+.hamburger {
+  height: 80px;
+  top: 0px;
+  right: 0;
+  width: 100%;
+  positon: fixed;
+  right: 0px;
+  padding: 0 25px;
+  z-index: 9999;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* デスクトップでの高さ調整 */
+@media (min-width: 768px) {
+  .hamburger {
+    height: 90px;
+  }
+}
+
+.hamburger span {
+  background-color: white;
+  display: block;
+  height: 2px;
+  position: absolute;
+  transition: 0.3s transform, 0.3s background-color;
+  width: 50px;
+  padding: 0 auto;
+}
+
+/* Hamburger non-active */
+.hamburger span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-10px);
+}
+
+.hamburger span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.3s opacity;
+}
+
+.hamburger span:nth-child(3) {
+  top: 50%;
+  transform: translateY(10px);
+}
+
+/* Hamburger active */
+.hamburger.is-active span {
+  background-color: white;
+}
+
+.hamburger.is-active span:nth-child(1) {
+  top: 50%;
+  transform: rotate(-135deg);
+}
+
+.hamburger.is-active span:nth-child(2) {
+  width: 0;
+  left: 50%;
+  opacity: 0;
+}
+
+.hamburger.is-active span:nth-child(3) {
+  top: 50%;
+  transform: rotate(135deg);
+}

@@ -5,7 +5,7 @@ echo "🚀 Vercelプロジェクトの設定情報を取得中..."
 # Vercel CLIがインストールされているかチェック
 if ! command -v vercel &> /dev/null; then
     echo "❌ Vercel CLIがインストールされていません。"
-    echo "npm install -g vercel を実行してください。"
+    echo "pnpm install -g vercel を実行してください。"
     exit 1
 fi
 

@@ -1,0 +1,214 @@
+/* MVコンポーネントのスタイル */
+.mv {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  margin-top: 80px;
+}
+
+/* Splideの基本スタイル */
+.mv :global(.splide) {
+  height: calc(100vh - 80px);
+}
+
+.mv :global(.splide__track) {
+  height: calc(100vh - 80px);
+}
+
+.mv :global(.splide__list) {
+  height: calc(100vh - 80px);
+}
+
+.mv :global(.splide__slide) {
+  height: calc(100vh - 80px);
+  position: relative;
+  opacity: 1;
+  z-index: 1;
+}
+
+.mv :global(.splide__slide.is-active) {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* スライドコンテンツ */
+.slide__content {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.slide__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.slide__text {
+  text-align: right;
+  color: white;
+  z-index: 2;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  margin: 20px;
+}
+
+.slide__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+}
+
+.slide__description {
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  line-height: 1.3;
+  opacity: 0.9;
+}
+
+/* ページネーションのスタイル */
+.splide__pagination {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+.splide__pagination__page {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.splide__pagination__page.is-active {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.2);
+}
+
+.splide__pagination__page:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+/* デスクトップでの高さ調整 */
+@media (min-width: 768px) {
+  .mv {
+    height: calc(100vh - 90px);
+    margin-top: 90px;
+  }
+
+  .mv :global(.splide) {
+    height: calc(100vh - 90px);
+  }
+
+  .mv :global(.splide__track) {
+    height: calc(100vh - 90px);
+  }
+
+  .mv :global(.splide__list) {
+    height: calc(100vh - 90px);
+  }
+
+  .mv :global(.splide__slide) {
+    height: calc(100vh - 90px);
+  }
+
+  .slide__content {
+    height: calc(100vh - 90px);
+  }
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .mv {
+    height: calc(100vh - 80px);
+    margin-top: 80px;
+  }
+
+  .mv :global(.splide) {
+    height: calc(100vh - 80px);
+  }
+
+  .mv :global(.splide__track) {
+    height: calc(100vh - 80px);
+  }
+
+  .mv :global(.splide__list) {
+    height: calc(100vh - 80px);
+  }
+
+  .mv :global(.splide__slide) {
+    height: calc(100vh - 80px);
+  }
+
+  .slide__content {
+    height: calc(100vh - 80px);
+  }
+
+  .slide__text {
+    padding: 15px;
+    margin: 15px;
+  }
+
+  .slide__title {
+    font-size: 1rem;
+  }
+
+  .slide__description {
+    font-size: 0.8rem;
+  }
+
+  .splide__pagination {
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide__text {
+    padding: 12px;
+    margin: 12px;
+  }
+
+  .slide__title {
+    font-size: 0.9rem;
+  }
+
+  .slide__description {
+    font-size: 0.75rem;
+  }
+}

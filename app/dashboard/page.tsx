@@ -22,22 +22,24 @@ const Dashboard = async () => {
   const profile = await getProfileData(supabase, user?.id as string);
 
   return (
-    <div className={styles.dashboardContainer}>
-      <div className={styles.dashboardHeader}>
-        <h1 className={styles.dashboardTitle}>ユーザー管理ダッシュボード</h1>
-      </div>
-      
-      <div className={styles.dashboardContent}>
-        <div className={styles.subscriptionInfo}>
-          <div className={`${styles.subscriptionStatus} ${profile?.is_subscription ? styles.active : styles.inactive}`}>
-            {profile?.is_subscription 
-              ? `プラン契約中: ${profile?.interval} プラン` 
-              : 'プラン契約中: なし'}
+    <main className="page-container">
+      <div className={styles.dashboardContainer}>
+        <div className={styles.dashboardHeader}>
+          <h1 className={styles.dashboardTitle}>ユーザー管理ダッシュボード</h1>
+        </div>
+        
+        <div className={styles.dashboardContent}>
+          <div className={styles.subscriptionInfo}>
+            <div className={`${styles.subscriptionStatus} ${profile?.is_subscription ? styles.active : styles.inactive}`}>
+              {profile?.is_subscription 
+                ? `プラン契約中: ${profile?.interval} プラン` 
+                : 'プラン契約中: なし'}
+            </div>
+            <SubscriptionManagementButton />
           </div>
-          <SubscriptionManagementButton />
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 

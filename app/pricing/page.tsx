@@ -59,30 +59,32 @@ const PricingPage = async () => {
   
 
   return (
-    <div className={styles['pricing-container']}>
-      <div className={styles['pricing-grid']}>
-        {plans.map((plan: Plan) => (
-          <div key={plan.id} className={styles['pricing-card']}>
-            <h2 className={styles['pricing-title']}>
-              {plan.name} プラン
-            </h2>
-            <p className={styles['pricing-subtitle']}>
-              {plan.interval}
-            </p>
-            <p className={styles['pricing-price']}>
-              {plan.price}円 / {plan.interval}
-            </p>
-            <button className={styles['pricing-button']}>
-              {showCreateAccountButton && <LoginButton />}
-              {showSubscriptionButton && <SubscriptionButton planId={plan.id}>サブスクリプション契約をする</SubscriptionButton>}
-              {showManageSubscriptionButton && (
-                <Link href="/dashboard">サブスクリプションを管理する</Link>
-              )}
-            </button>
-          </div>
-        ))}
+    <main className="page-container">
+      <div className={styles['pricing-container']}>
+        <div className={styles['pricing-grid']}>
+          {plans.map((plan: Plan) => (
+            <div key={plan.id} className={styles['pricing-card']}>
+              <h2 className={styles['pricing-title']}>
+                {plan.name} プラン
+              </h2>
+              <p className={styles['pricing-subtitle']}>
+                {plan.interval}
+              </p>
+              <p className={styles['pricing-price']}>
+                {plan.price}円 / {plan.interval}
+              </p>
+              <button className={styles['pricing-button']}>
+                {showCreateAccountButton && <LoginButton />}
+                {showSubscriptionButton && <SubscriptionButton planId={plan.id}>サブスクリプション契約をする</SubscriptionButton>}
+                {showManageSubscriptionButton && (
+                  <Link href="/dashboard">サブスクリプションを管理する</Link>
+                )}
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
-    </div> 
+    </main>
   )
 }
 

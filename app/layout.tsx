@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Lesson講座販売アプリ",
-  description: "動画レッスンを販売するアプリです",
+  title: "travelvoices",
+  description: "あなたの旅は、きっと意味がある",
 };
 
 export default function RootLayout({
@@ -27,13 +27,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <body
         className={`${geistSans.variable} ${geistMono.variable}`}
       >
         <AuthProvider />
         <Header />
-        <main className="page-container">
+        <main>
           {children}
         </main>
       </body>

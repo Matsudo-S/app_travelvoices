@@ -8,7 +8,7 @@ Next.js App Router + Supabase + Stripe 学習用アプリ。2024 年のベスト
 - TypeScript
 - Supabase
 - Jest + Testing Library
-- CSS Modules + Tailwind (必要箇所のみ)
+- CSS Modules
 
 ## Directory Structure (key parts)
 
@@ -44,7 +44,7 @@ app/
 │  │  ├─ reset.css              # 最初に読み込む（ブラウザ差異のリセット）
 │  │  ├─ base.css               # 要素のベーススタイル
 │  │  └─ global.css             # プロジェクト全体の共通クラス
-│  ├─ globals.css               # Tailwind や CSS 変数の土台
+│  ├─ globals.css               # CSS 変数の土台
 │  └─ theme.ts
 ├─ types/
 │  └─ index.d.ts           # アプリ共通の型 (Lesson など)
@@ -80,7 +80,7 @@ public/
   - グローバルで共有する CSS。読み込み順は `reset.css → base.css → global.css`。
   - 読み込みは `app/layout.tsx` で行います（Details below）。
 - `app/styles/globals.css`
-  - Tailwind、CSS 変数、`@layer` の土台。`reset/base/global` はここでは import しません（重複回避）。
+  - CSS 変数、`@layer` の土台。`reset/base/global` はここでは import しません（重複回避）。
 - `app/types/`
   - 共通型定義（例: `Lesson`）。DB の実型は `lib/database.types.ts` に準拠。
 - `public/`
@@ -105,7 +105,7 @@ import "./styles/globals.css";
 
 ```bash
 # Vercel CLIをインストール（未インストールの場合）
-npm install -g vercel
+pnpm install -g vercel
 
 # プロジェクトをVercelにリンク
 vercel
@@ -151,7 +151,7 @@ git push origin main
 ```
 
 - その後 `base.css` と `global.css` で共通の見た目を定義
-- 最後に `globals.css` で Tailwind や CSS 変数をセット
+- 最後に `globals.css` で CSS 変数をセット
 
 ## Routing & Pages
 
@@ -178,9 +178,9 @@ app/components/ui/button/
 ## Scripts
 
 ```bash
-npm run dev      # 開発サーバ
-npm run build    # 本番ビルド（ESLint/型チェック含む）
-npm run test     # ユニットテスト
+pnpm dev         # 開発サーバ
+pnpm build       # 本番ビルド（ESLint/型チェック含む）
+pnpm test        # ユニットテスト
 ```
 
 ## How to add a new UI component
