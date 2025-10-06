@@ -9,29 +9,52 @@
   margin-top: 80px;
 }
 
-/* Splideの基本スタイル */
-.mv :global(.splide) {
-  height: calc(100vh - 80px);
+/* Swiperのスタイル */
+.mv :global(.mv-swiper) {
+  height: 100%;
 }
 
-.mv :global(.splide__track) {
-  height: calc(100vh - 80px);
-}
-
-.mv :global(.splide__list) {
-  height: calc(100vh - 80px);
-}
-
-.mv :global(.splide__slide) {
+.mv :global(.swiper-slide) {
   height: calc(100vh - 80px);
   position: relative;
   opacity: 1;
   z-index: 1;
 }
 
-.mv :global(.splide__slide.is-active) {
+.mv :global(.swiper-slide-active) {
   opacity: 1;
   z-index: 2;
+}
+
+/* Swiperのページネーションスタイル */
+.mv :global(.swiper-pagination) {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+.mv :global(.swiper-pagination-bullet) {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mv :global(.swiper-pagination-bullet-active) {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.2);
+}
+
+.mv :global(.swiper-pagination-bullet:hover) {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
 }
 
 /* スライドコンテンツ */
@@ -94,37 +117,6 @@
   opacity: 0.9;
 }
 
-/* ページネーションのスタイル */
-.splide__pagination {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  display: flex;
-  gap: 10px;
-}
-
-.splide__pagination__page {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.splide__pagination__page.is-active {
-  background: rgba(255, 255, 255, 1);
-  transform: scale(1.2);
-}
-
-.splide__pagination__page:hover {
-  background: rgba(255, 255, 255, 0.8);
-  transform: scale(1.1);
-}
-
 /* デスクトップでの高さ調整 */
 @media (min-width: 768px) {
   .mv {
@@ -132,19 +124,7 @@
     margin-top: 90px;
   }
 
-  .mv :global(.splide) {
-    height: calc(100vh - 90px);
-  }
-
-  .mv :global(.splide__track) {
-    height: calc(100vh - 90px);
-  }
-
-  .mv :global(.splide__list) {
-    height: calc(100vh - 90px);
-  }
-
-  .mv :global(.splide__slide) {
+  .mv :global(.swiper-slide) {
     height: calc(100vh - 90px);
   }
 
@@ -160,19 +140,7 @@
     margin-top: 80px;
   }
 
-  .mv :global(.splide) {
-    height: calc(100vh - 80px);
-  }
-
-  .mv :global(.splide__track) {
-    height: calc(100vh - 80px);
-  }
-
-  .mv :global(.splide__list) {
-    height: calc(100vh - 80px);
-  }
-
-  .mv :global(.splide__slide) {
+  .mv :global(.swiper-slide) {
     height: calc(100vh - 80px);
   }
 
@@ -193,7 +161,7 @@
     font-size: 0.8rem;
   }
 
-  .splide__pagination {
+  .mv :global(.swiper-pagination) {
     bottom: 20px;
   }
 }

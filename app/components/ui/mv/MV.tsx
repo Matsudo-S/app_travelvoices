@@ -1,23 +1,15 @@
 'use client'
 
 import React, { useRef, useEffect } from 'react'
-import { Splide, SplideSlide } from '@splidejs/react-splide'
-import '@splidejs/react-splide/css'
-import { AutoScroll } from '@splidejs/splide-extension-auto-scroll'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Pagination, Navigation } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 import styles from './mv.module.css'
 
 const MV = () => {
-  const splideRef = useRef<any>(null)
-
-  useEffect(() => {
-    if (splideRef.current) {
-      const splide = splideRef.current.splide
-      if (splide) {
-        console.log('Splide instance available')
-        
-      }
-    }
-  }, [])
+  const swiperRef = useRef<any>(null)
 
   const images = [
     {
@@ -40,53 +32,57 @@ const MV = () => {
     }
   ]
 
+  // ループ用にスライドを複製（slidesPerView: 1.5で安定したループのため）
+  const duplicatedImages = [...images, ...images, ...images]
+
   return (
     <section className={styles.mv}>
-      <Splide
-        ref={splideRef}
-        options={{
-          type: 'loop',
-          drag: 'free',
-          focus: 'center',
-          perPage: 1.5,
-          speed: 1500,
-          arrows: true,
-          pagination: true,
-          keyboard: false,
-          autoplay: {
-            delay: 2000,
-            pauseOnHover: false,
-            pauseOnFocus: false,
+      <Swiper
+        ref={swiperRef}
+        modules={[Autoplay, Pagination, Navigation]}
+        spaceBetween={0}
+        slidesPerView={1.5}
+        centeredSlides={true}
+        loop={true}
+        speed={4000}
+        autoplay={{
+          delay: 6000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+        navigation={true}
+        className="mv-swiper"
+        initialSlide={3}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            centeredSlides: true,
           },
-          extensions: {
-          AutoScroll: {
-            speed: 1500,
-              pauseOnHover: false,
-              pauseOnFocus: false,
-            },
+          768: {
+            slidesPerView: 1.5,
+            centeredSlides: true,
           },
         }}
-        aria-label="メインビジュアル"
       >
-        {images.map((image, index) => (
-            <SplideSlide key={index}>
-              <div className={styles.slide__content}>
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className={styles.slide__image}
-                  loading="lazy"
-                />
-                <div className={styles.slide__overlay}>
-                  <div className={styles.slide__text}>
-                    <h1 className={styles.slide__title}>{image.title}</h1>
-                    <p className={styles.slide__description}>{image.description}</p>
-                  </div>
+        {duplicatedImages.map((image, index) => (
+          <SwiperSlide key={index}>
+            <div className={styles.slide__content}>
+              <img
+                src={image.src}
+                alt={image.alt}
+                className={styles.slide__image}
+                loading="lazy"
+              />
+              <div className={styles.slide__overlay}>
+                <div className={styles.slide__text}>
+                  <h1 className={styles.slide__title}>{image.title}</h1>
+                  <p className={styles.slide__description}>{image.description}</p>
                 </div>
               </div>
-            </SplideSlide>
+            </div>
+          </SwiperSlide>
         ))}
-      </Splide>
+      </Swiper>
     </section>
   )
 }
