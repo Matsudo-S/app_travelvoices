@@ -13,6 +13,7 @@ import { footerNavigationItems, footerSocialItems, footerSocialIcons } from '../
 const Header = () => {
   const [user, setUser] = useState<any>(null)
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   // ログイン後のナビゲーションアイテム
   const profileItem: NavigationItem = { href: '/dashboard', mainText: 'プロフィール', subText: 'Profile', showInDrawer: true }
@@ -33,6 +34,17 @@ const Header = () => {
     getUser()
   }, [])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY
+      const headerHeight = 80 // Headerの高さを想定
+      setIsScrolled(scrollTop > headerHeight)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen)
@@ -51,7 +63,7 @@ const Header = () => {
   }
   
   return (
-    <header className={`${styles.header} ${styles['is-active']}`}>
+    <header className={`${styles.header} ${styles['is-active']} ${isScrolled ? styles['is-scrolled'] : ''}`}>
       <div className={styles['header__inner']}>
         <Link href="/" className={styles['header__logo']}>
           travel<br/>voices

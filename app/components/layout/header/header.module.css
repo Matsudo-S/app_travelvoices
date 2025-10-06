@@ -9,6 +9,11 @@
   transition: all 0.3s ease;
 }
 
+.header.is-scrolled {
+  background: rgba(42, 42, 42, 0.68);
+  backdrop-filter: blur(10px);
+}
+
 /* デスクトップでの高さ調整 */
 @media (min-width: 768px) {
   .header {
