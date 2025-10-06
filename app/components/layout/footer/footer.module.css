@@ -1,0 +1,420 @@
+.footer {
+  background: #2a2a2a;
+  color: white;
+  position: relative;
+  width: 100%;
+}
+
+/* 上部バー */
+.footer__top {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.footer__scrollContainer {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.footer__scrollContent {
+  display: flex;
+  align-items: center;
+  animation: elegantScroll 25s　infinite;
+  white-space: nowrap;
+}
+
+.footer__topItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-right: 60px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.footer__topItem:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.footer__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.footer__icon:hover {
+  color: #ffd700;
+  transform: rotate(360deg);
+}
+
+/* エレガントなスクロールアニメーション */
+@keyframes elegantScroll {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* パルスアニメーション（アイコン用） */
+@keyframes gentlePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+.footer__icon {
+  animation: gentlePulse 3s ease-in-out infinite;
+}
+
+/* メインコンテンツ */
+.footer__main {
+  padding: 40px 40px 20px;
+}
+
+.footer__content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer__about {
+  width: 100%;
+  text-align: left;
+}
+
+.footer__aboutLink {
+  text-decoration: underline;
+  color: blue;
+}
+
+.footer__linksContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer__section {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: white;
+  text-transform: capitalize;
+}
+
+.footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__links li {
+  margin-bottom: 12px;
+}
+
+.footer__links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer__links a:hover {
+  color: white;
+}
+
+.footer__privacyChoice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer__privacyIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4a9eff;
+}
+
+.footer__sustainability {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer__sustainabilityLink {
+  color: #4a9eff;
+  text-decoration: underline;
+  margin-left: 4px;
+}
+
+.footer__sustainabilityLink:hover {
+  color: #66b3ff;
+}
+
+.footer__br {
+  display: none;
+}
+
+/* ソーシャルメディア */
+.footer__social {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.footer__socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.footer__socialLink:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* 下部セクション */
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px 40px;
+}
+
+.footer__bottomContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.footer__copyright {
+  flex: 1;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+}
+
+.footer__copyright a {
+  color: #4a9eff;
+  text-decoration: underline;
+}
+
+.footer__copyright a:hover {
+  color: #66b3ff;
+}
+
+.footer__bottomLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer__bottomLinksRow {
+  display: flex;
+  gap: 20px;
+}
+
+.footer__bottomLinksColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer__bottomLinks a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 12px;
+  transition: color 0.3s ease;
+}
+
+.footer__bottomLinks a:hover {
+  color: white;
+}
+
+/* フローティングアクションボタン */
+.footer__floating {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.footer__floatingButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  color: #2a2a2a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.footer__floatingButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* モバイル対応（768px未満） */
+@media (max-width: 768px) {
+  .footer__top {
+    padding: 15px 0;
+  }
+
+  .footer__topItem {
+    font-size: 12px;
+    margin-right: 40px;
+  }
+
+  .footer__scrollContent {
+    animation: elegantScroll 25s ease-in-out infinite;
+  }
+
+  .footer__main {
+    padding: 30px 20px 20px;
+  }
+
+  .footer__content {
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  .footer__linksContainer {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer__section {
+    text-align: center;
+  }
+
+  .footer__br {
+    display: block;
+  }
+
+  .footer__sectionTitle {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer__links li {
+    margin-bottom: 8px;
+  }
+
+  .footer__social {
+    gap: 15px;
+    margin-top: 30px;
+  }
+
+  .footer__socialLink {
+    width: 35px;
+    height: 35px;
+  }
+
+  .footer__bottom {
+    padding: 20px;
+  }
+
+  .footer__bottomContent {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer__bottomLinksRow {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .footer__bottomLinksColumn {
+    align-items: center;
+  }
+
+  .footer__floating {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .footer__floatingButton {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* タブレット対応（768px以上） */
+@media (min-width: 768px) {
+  .footer__content {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* デスクトップ対応（1024px以上） */
+@media (min-width: 1024px) {
+  .footer__content {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px;
+  }
+
+  .footer__main {
+    padding: 60px 40px 40px;
+  }
+
+  .footer__bottom {
+    padding: 30px 40px;
+  }
+
+  .footer__scrollContent {
+    animation: elegantScroll 25s ease-in-out infinite;
+  }
+}

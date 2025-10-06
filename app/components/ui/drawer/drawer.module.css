@@ -43,11 +43,46 @@ body.is-drawer-active {
 .drawerMenu__lists {
   margin-top: 104px;
   padding-bottom: 40px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   width: 100%;
   max-width: 600px;
+}
+
+/* デスクトップ（768px以上）での2×2グリッドレイアウト */
+@media (min-width: 768px) {
+  .drawerMenu__lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 30px;
+    max-width: 800px;
+  }
+
+  /* サービス: 左上 */
+  .drawer__category:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  /* アカウント: 右上 */
+  .drawer__category:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  /* サポート: 左下 */
+  .drawer__category:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  /* SNS: 右下 */
+  .drawer__category:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+  }
 }
 
 .drawer__menuList {
@@ -102,5 +137,44 @@ body.is-drawer-active {
 }
 
 .drawer__link:hover .drawer__text {
+  color: #333;
+}
+
+/* カテゴリスタイリング */
+.drawer__category {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.drawer__categoryTitle {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.drawer__category .drawer__menuList {
+  margin-bottom: 8px;
+}
+
+/* SNSアイコンスタイリング */
+.drawer__socialItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.drawer__socialIcon {
+  font-size: 18px;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.drawer__link:hover .drawer__socialIcon {
   color: #333;
 }

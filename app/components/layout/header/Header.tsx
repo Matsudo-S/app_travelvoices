@@ -8,25 +8,18 @@ import Hamburger from '../../ui/hamburger/Hamburger'
 import Drawer from '../../ui/drawer/Drawer'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { NavigationItem } from '../../../types/navigation'
+import { footerNavigationItems, footerSocialItems, footerSocialIcons } from '../footer/Footer'
 
 const Header = () => {
   const [user, setUser] = useState<any>(null)
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-  const [isFixed, setIsFixed] = useState(false)
-
-  // ナビゲーションデータの定義
-  const navigationItems: NavigationItem[] = [
-    { href: '/search', mainText: 'search', subText: '記事検索', showInDrawer: true },
-    { href: '/post', mainText: 'post', subText: '投稿', showInDrawer: true },
-    { href: '/about', mainText: 'about', subText: '使い方', showInDrawer: true },
-    { href: '/plan', mainText: 'plan', subText: '料金', showInDrawer: true }
-  ]
 
   // ログイン後のナビゲーションアイテム
   const profileItem: NavigationItem = { href: '/dashboard', mainText: 'プロフィール', subText: 'Profile', showInDrawer: true }
-
-  // ドロワーメニューに表示するアイテムをフィルタリング
-  const drawerNavigationItems = navigationItems.filter(item => item.showInDrawer)
+  
+  // ドロワーメニューに表示するアイテムをフィルタリング（Footerのナビゲーションデータを使用）
+  const drawerNavigationItems = footerNavigationItems.filter(item => item.showInDrawer)
+  const drawerSocialItems = footerSocialItems.filter(item => item.showInDrawer)
   
   // ログイン後のドロワーメニューアイテム
   const drawerProfileItems = user?.session ? [profileItem] : []
@@ -40,24 +33,6 @@ const Header = () => {
     getUser()
   }, [])
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY
-      const viewportHeight = window.innerHeight
-      const headerHeight = window.innerWidth >= 768 ? 90 : 80
-      const mvHeight = viewportHeight - headerHeight
-      
-      // MVコンポーネントの高さ分スクロールしたら固定表示
-      if (scrollY >= mvHeight) {
-        setIsFixed(true)
-      } else {
-        setIsFixed(false)
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen)
@@ -76,7 +51,7 @@ const Header = () => {
   }
   
   return (
-    <header className={`${styles.header} ${styles['is-active']} ${isFixed ? styles['is-fixed'] : ''}`}>
+    <header className={`${styles.header} ${styles['is-active']}`}>
       <div className={styles['header__inner']}>
         <Link href="/" className={styles['header__logo']}>
           travel<br/>voices
@@ -85,14 +60,30 @@ const Header = () => {
           <div className={styles['header__auth-button']}>
             <AuthClientButton session={user} />
           </div>
-          {navigationItems.map((item, index) => (
-            <Link key={item.href} href={item.href} className={`${styles['header__link']} ${styles['header__link--underline']}`}>
-              <span>
-                <div className={styles['header__item-main']}>{item.mainText}</div>
-                <div className={styles['header__item-sub']}>{item.subText}</div>
-              </span>
-            </Link>
-          ))}
+          <Link href="/search" className={`${styles['header__link']} ${styles['header__link--underline']}`}>
+            <span>
+              <div className={styles['header__item-main']}>search</div>
+              <div className={styles['header__item-sub']}>記事検索</div>
+            </span>
+          </Link>
+          <Link href="/create-post" className={`${styles['header__link']} ${styles['header__link--underline']}`}>
+            <span>
+              <div className={styles['header__item-main']}>post</div>
+              <div className={styles['header__item-sub']}>投稿</div>
+            </span>
+          </Link>
+          <Link href="/about" className={`${styles['header__link']} ${styles['header__link--underline']}`}>
+            <span>
+              <div className={styles['header__item-main']}>about</div>
+              <div className={styles['header__item-sub']}>使い方</div>
+            </span>
+          </Link>
+          <Link href="/plan" className={`${styles['header__link']} ${styles['header__link--underline']}`}>
+            <span>
+              <div className={styles['header__item-main']}>price</div>
+              <div className={styles['header__item-sub']}>料金</div>
+            </span>
+          </Link>
           {user?.session && (
             <Link href={profileItem.href} className={`${styles['header__link']} ${styles['header__link--underline']}`}>
               <span>
@@ -106,7 +97,7 @@ const Header = () => {
             </div>
         </div>
       </div>
-      <Drawer isOpen={isDrawerOpen} onClose={closeDrawer} navigationItems={[...drawerNavigationItems, ...drawerProfileItems]} />
+      <Drawer isOpen={isDrawerOpen} onClose={closeDrawer} navigationItems={[...drawerNavigationItems, ...drawerProfileItems]} socialItems={drawerSocialItems} socialIcons={footerSocialIcons} />
     </header>
   )
 }

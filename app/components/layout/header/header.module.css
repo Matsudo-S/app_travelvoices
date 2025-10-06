@@ -1,22 +1,12 @@
 .header {
   height: 80px;
-  background: rgba(0, 0, 0, 0.68);
-  position: absolute;
+  background: #2a2a2a;
+  position: fixed;
   z-index: 900;
   top: 0;
   right: 0;
   left: 0;
   transition: all 0.3s ease;
-}
-
-.header.is-fixed {
-  position: fixed;
-  background: rgba(0, 0, 0, 0.68);
-}
-
-/* MV表示時（スクロール前）は背景透過なし */
-.header:not(.is-fixed) {
-  background: rgba(0, 0, 0, 1);
 }
 
 /* デスクトップでの高さ調整 */

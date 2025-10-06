@@ -4,6 +4,7 @@ import "./styles/css/reset.css";
 import "./styles/css/base.css";
 import "./styles/css/global.css";
 import Header from "./components/layout/header/Header";
+import Footer from "./components/layout/footer/Footer";
 import AuthProvider from "./components/AuthProvider";
 
 const geistSans = Geist({
@@ -36,6 +37,7 @@ export default function RootLayout({
         <main>
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

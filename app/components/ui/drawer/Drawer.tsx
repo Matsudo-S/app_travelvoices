@@ -4,14 +4,17 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import styles from './drawer.module.css'
 import { NavigationItem } from '../../../types/navigation'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 interface DrawerProps {
   isOpen: boolean
   onClose: () => void
   navigationItems: NavigationItem[]
+  socialItems?: NavigationItem[]
+  socialIcons?: any
 }
 
-const Drawer = ({ isOpen, onClose, navigationItems }: DrawerProps) => {
+const Drawer = ({ isOpen, onClose, navigationItems, socialItems = [], socialIcons = {} }: DrawerProps) => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -52,17 +55,78 @@ const Drawer = ({ isOpen, onClose, navigationItems }: DrawerProps) => {
     onClose()
   }
 
+  // カテゴリごとにナビゲーションアイテムを分類
+  const serviceItems = navigationItems.filter(item => 
+    ['/about', '/search', '/create-post', '/price'].includes(item.href)
+  )
+  const accountItems = navigationItems.filter(item => 
+    ['/mypage', '/404'].includes(item.href)
+  )
+  const supportItems = navigationItems.filter(item => 
+    ['/contact', '/faq', '/privacy', '/terms'].includes(item.href)
+  )
+
   return (
     <div className={`${styles.drawerMenu} ${isOpen ? styles['is-open'] : ''}`}>
       <div className={styles.drawerMenu__inner}>
         <nav className={styles.drawerMenu__lists}>
-          {navigationItems.map((item, index) => (
-            <div key={item.href} className={styles.drawer__menuList}>
-              <Link href={item.href} onClick={handleLinkClick} className={styles.drawer__link}>
-                <span className={styles.drawer__text}>{item.mainText}</span>
-              </Link>
-            </div>
-          ))}
+          {/* サービスカテゴリ */}
+          <div className={styles.drawer__category}>
+            <h3 className={styles.drawer__categoryTitle}>サービス</h3>
+            {serviceItems.map((item, index) => (
+              <div key={item.href} className={styles.drawer__menuList}>
+                <Link href={item.href} onClick={handleLinkClick} className={styles.drawer__link}>
+                  <span className={styles.drawer__text}>{item.mainText}</span>
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          {/* アカウントカテゴリ */}
+          <div className={styles.drawer__category}>
+            <h3 className={styles.drawer__categoryTitle}>アカウント</h3>
+            {accountItems.map((item, index) => (
+              <div key={item.href} className={styles.drawer__menuList}>
+                <Link href={item.href} onClick={handleLinkClick} className={styles.drawer__link}>
+                  <span className={styles.drawer__text}>{item.mainText}</span>
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          {/* SNSカテゴリ */}
+          <div className={styles.drawer__category}>
+            <h3 className={styles.drawer__categoryTitle}>SNS</h3>
+            {socialItems.map((item, index) => {
+              // URLからアイコンを特定
+              let iconKey = 'instagram'
+              if (item.href.includes('x.com')) iconKey = 'x'
+              if (item.href.includes('line.me')) iconKey = 'line'
+              
+              return (
+                <div key={item.href} className={styles.drawer__menuList}>
+                  <Link href={item.href} onClick={handleLinkClick} className={styles.drawer__link} target="_blank" rel="noopener noreferrer">
+                    <div className={styles.drawer__socialItem}>
+                      <FontAwesomeIcon icon={socialIcons[iconKey]} className={styles.drawer__socialIcon} />
+                      <span className={styles.drawer__text}>{item.mainText}</span>
+                    </div>
+                  </Link>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* サポートカテゴリ */}
+          <div className={styles.drawer__category}>
+            <h3 className={styles.drawer__categoryTitle}>サポート</h3>
+            {supportItems.map((item, index) => (
+              <div key={item.href} className={styles.drawer__menuList}>
+                <Link href={item.href} onClick={handleLinkClick} className={styles.drawer__link}>
+                  <span className={styles.drawer__text}>{item.mainText}</span>
+                </Link>
+              </div>
+            ))}
+          </div>
         </nav>
       </div>
     </div>
