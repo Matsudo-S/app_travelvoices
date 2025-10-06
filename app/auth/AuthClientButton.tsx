@@ -33,9 +33,9 @@ const AuthClientButton = ({ session }: { session: Session | null }) => {
   return (
     <>
     {session ? (
-      <Button onClick={handleSignOut}>ログアウト</Button>
+      <Button onClick={handleSignOut} variant="gradient" className="logout">ログアウト</Button>
     ) : (
-      <Button onClick={handleSignIn}>ログイン</Button>
+      <Button onClick={handleSignIn} variant="gradient" className="login">ログイン</Button>
     )}
     <Toast 
       message={toast.message} 

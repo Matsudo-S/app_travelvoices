@@ -98,6 +98,43 @@
   text-decoration: underline;
 }
 
+/* グラデーションアニメーション用のバリアント */
+.gradient {
+  padding: 15px 60px;
+  position: relative;
+  display: inline-block;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #4a5568 0%, #718096 50%, #4a5568 100%);
+  background-size: 200% 100%;
+  transition: background-position 0.3s ease-out;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  height: auto;
+  box-shadow: none;
+}
+
+/* ログイン状態のグラデーション */
+.gradient.login {
+  background: linear-gradient(90deg, #2d3748 0%, #4a5568 50%, #2d3748 100%);
+}
+
+/* ログアウト状態のグラデーション */
+.gradient.logout {
+  background: linear-gradient(90deg, #2b6cb0 0%, #3182ce 50%, #2b6cb0 100%);
+}
+
+@media (any-hover: hover) {
+  .gradient:hover {
+    background-position: 100% 0;
+  }
+}
+
 /* Sizes */
 .sm {
   height: 2rem;
