@@ -6,7 +6,7 @@ interface ButtonProps {
   children: React.ReactNode;
   href?: string;
   onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'back' | 'gradient';
+  variant?: 'primary' | 'secondary' | 'back' | 'gradient' | 'frame';
   className?: string;
 }
 
@@ -17,7 +17,7 @@ function Button({
   variant = 'primary',
   className = ''
 }: ButtonProps) {
-  const buttonClass = `${styles.button} ${styles[variant]} ${className}`;
+  const buttonClass = `${styles.button} ${styles[variant]} ${className ? styles[className] : ''}`;
 
   if (href) {
     return (

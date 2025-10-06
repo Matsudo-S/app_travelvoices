@@ -135,6 +135,84 @@
   }
 }
 
+/* フレームアニメーション用のバリアント */
+.frame {
+  padding: 15px 60px;
+  position: relative;
+  display: inline-block;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #2a2a2a;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  height: auto;
+  box-shadow: none;
+}
+
+.frame::before,
+.frame::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #2a2a2a;
+  transition: width 0.8s cubic-bezier(0.85, 0, 0.15, 1),
+    height 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.frame::before {
+  top: -3px;
+  left: -3px;
+  border-width: 1px 0 0 1px;
+}
+
+.frame::after {
+  right: -3px;
+  bottom: -3px;
+  border-width: 0 1px 1px 0;
+}
+
+@media (any-hover: hover) {
+  .frame:hover::before,
+  .frame:hover::after {
+    width: calc(100% + 6px);
+    height: calc(100% + 6px);
+  }
+}
+
+/* フレームボタンの色バリエーション */
+.frame.primary {
+  background-color: #2a2a2a;
+}
+
+.frame.primary::before,
+.frame.primary::after {
+  border-color: #2a2a2a;
+}
+
+.frame.secondary {
+  background-color: #3182ce;
+}
+
+.frame.secondary::before,
+.frame.secondary::after {
+  border-color: #3182ce;
+}
+
+.frame.accent {
+  background-color: #38a169;
+}
+
+.frame.accent::before,
+.frame.accent::after {
+  border-color: #38a169;
+}
+
 /* Sizes */
 .sm {
   height: 2rem;
