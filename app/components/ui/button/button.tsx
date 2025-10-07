@@ -8,6 +8,7 @@ interface ButtonProps {
   onClick?: () => void;
   variant?: 'primary' | 'secondary' | 'back' | 'gradient' | 'frame';
   className?: string;
+  disabled?: boolean;
 }
 
 function Button({ 
@@ -15,7 +16,8 @@ function Button({
   href, 
   onClick, 
   variant = 'primary',
-  className = ''
+  className = '',
+  disabled = false
 }: ButtonProps) {
   const buttonClass = `${styles.button} ${styles[variant]} ${className ? styles[className] : ''}`;
 
@@ -28,7 +30,7 @@ function Button({
   }
 
   return (
-    <button className={buttonClass} onClick={onClick}>
+    <button className={buttonClass} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

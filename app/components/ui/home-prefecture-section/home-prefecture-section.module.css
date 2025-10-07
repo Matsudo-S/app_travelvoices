@@ -1,0 +1,475 @@
+.section {
+  padding: 90px 30px; /* 1.5x larger padding */
+  background: #1f1f1f;
+  min-height: 80vh; /* 1.5x larger height */
+}
+
+.inner {
+  max-width: 1500px; /* 1.5x larger max-width */
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 36px; /* 1.5x larger */
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.subtitle {
+  color: #cfcfcf;
+  margin-bottom: 36px; /* 1.5x larger */
+  text-align: center;
+  font-size: 18px; /* 1.5x larger */
+}
+
+/* 選択された都道府県表示 */
+.selectedSection {
+  background: #f0f8f0;
+  border: 2px solid #4a9d4a;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 36px;
+}
+
+.selectedHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.selectedTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2d5a2d;
+  margin: 0;
+}
+
+.clearAllButton {
+  background: #4a9d4a;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.clearAllButton:hover {
+  background: #3d7a3d;
+}
+
+.selectedTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.selectedTag {
+  background: #4a9d4a;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.removeTag {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.removeTag:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px; /* 1.5x larger */
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1.5fr 1fr; /* 1.5x larger map section */
+    align-items: start;
+  }
+}
+
+/* 地図セクション */
+.mapSection {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 24px;
+  border: 2px solid #e9ecef;
+}
+
+.mapHeader {
+  background: #dc3545;
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.mapTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.mapWrapper {
+  background: #ffffff;
+  border: 2px solid #dee2e6;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.mapImageHolder {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  min-height: 400px; /* 1.5x larger */
+}
+
+.mapImage {
+  object-fit: contain;
+}
+
+/* 地域ボタンを地図上にオーバーレイ */
+.regionButtonsOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none; /* 地図のクリックを許可 */
+}
+
+.regionGroup {
+  position: absolute;
+  pointer-events: auto; /* ボタンのクリックを有効化 */
+  transform: scale(clamp(0.8, 0.8 + (100vw - 320px) / 1120, 1));
+  transform-origin: center;
+}
+
+/* 地域ボタンの位置を地図上に配置（参考デザインに基づく） */
+.regionGroup:nth-child(1) {
+  /* 北海道 */
+  top: 11%;
+  right: 25%;
+}
+
+.regionGroup:nth-child(2) {
+  /* 東北 */
+  top: 38%;
+  right: 32%;
+}
+
+.regionGroup:nth-child(3) {
+  /* 関東 */
+  top: 55%;
+  right: 34%;
+}
+
+.regionGroup:nth-child(4) {
+  /* 甲信越 */
+  top: 46%;
+  right: 42%;
+}
+
+.regionGroup:nth-child(5) {
+  /* 中部 */
+  top: 61%;
+  right: 42%;
+}
+
+.regionGroup:nth-child(6) {
+  /* 近畿 */
+  top: 64%;
+  left: 40%;
+}
+
+.regionGroup:nth-child(7) {
+  /* 中国 */
+  top: 60%;
+  left: 31%;
+}
+
+.regionGroup:nth-child(8) {
+  /* 四国 */
+  top: 74%;
+  left: 35%;
+}
+
+.regionGroup:nth-child(9) {
+  /* 九州 */
+  top: 80%;
+  left: 20%;
+}
+
+.regionButton {
+  background: #4a9d4a;
+  color: white;
+  border: none;
+  padding: clamp(6px, 1.5vw, 8px) clamp(8px, 2vw, 12px);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: clamp(10px, 2.5vw, 14px);
+  display: flex;
+  align-items: center;
+  gap: clamp(2px, 0.5vw, 4px);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+}
+
+.regionButton:hover {
+  background: #3d7a3d;
+  transform: scale(1.05);
+}
+
+.regionButtonActive {
+  background: #ff6b35;
+}
+
+.regionArrow {
+  font-size: clamp(8px, 2vw, 12px);
+}
+
+.prefectureList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 20;
+  max-height: clamp(150px, 25vw, 200px);
+  overflow-y: auto;
+  min-width: clamp(100px, 15vw, 120px);
+}
+
+.prefectureButton {
+  width: 100%;
+  background: white;
+  color: #333;
+  border: none;
+  padding: clamp(6px, 1.5vw, 8px) clamp(8px, 2vw, 12px);
+  cursor: pointer;
+  font-size: clamp(9px, 2vw, 12px);
+  text-align: left;
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.prefectureButton:hover {
+  background: #f8f9fa;
+}
+
+.prefectureButton:last-child {
+  border-bottom: none;
+}
+
+.prefectureButtonSelected {
+  background: #e3f2fd;
+  color: #1976d2;
+  font-weight: 600;
+}
+
+/* コントロールセクション */
+.controlsSection {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 24px;
+  border: 2px solid #e9ecef;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px; /* 1.5x larger */
+}
+
+.field {
+}
+
+.label {
+  display: block;
+  color: #495057;
+  margin-bottom: 12px; /* 1.5x larger */
+  font-weight: 600;
+  font-size: 16px; /* 1.5x larger */
+}
+
+/* カテゴリ選択グリッド */
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 12px;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  background: white;
+}
+
+.categoryButton {
+  background: #f8f9fa;
+  color: #495057;
+  border: 2px solid #dee2e6;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-align: left;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.4;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.categoryButton:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+  transform: translateY(-1px);
+}
+
+.categoryButtonSelected {
+  background: #4a9d4a;
+  color: white;
+  border-color: #4a9d4a;
+  font-weight: 600;
+}
+
+.categoryButtonSelected:hover {
+  background: #3d7a3d;
+  border-color: #3d7a3d;
+}
+
+.button {
+  padding: 18px 30px; /* 1.5x larger */
+  background: #3182ce;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 18px; /* 1.5x larger */
+  font-weight: 600;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button:hover:not(:disabled) {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+/* コンパクト選択表示 */
+.compactSelectedSection {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.compactSelectedHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.compactSelectedTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #495057;
+  margin: 0;
+}
+
+.compactClearButton {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.compactClearButton:hover {
+  background: #5a6268;
+}
+
+.compactSelectedTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.compactSelectedTag {
+  background: #4a9d4a;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.compactRemoveTag {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.compactRemoveTag:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

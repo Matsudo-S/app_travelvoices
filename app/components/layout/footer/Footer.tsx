@@ -54,7 +54,7 @@ const Footer = () => {
               <div className={styles.footer__icon}>
                 <FontAwesomeIcon icon={faGift} />
               </div>
-              <span>あなたの旅には、きっと意味がある</span>
+              <span>（案）初回ログインから2週間無料キャンペーン中</span>
             </div>
           </div>
         </div>
