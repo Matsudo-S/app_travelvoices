@@ -75,11 +75,7 @@ const MV = () => {
       >
         {duplicatedImages.map((image, index) => (
           <SwiperSlide key={index}>
-            <div 
-              className={styles.slide__content}
-              onClick={() => handleSlideClick(image.title, image.description)}
-              style={{ cursor: 'pointer' }}
-            >
+            <div className={styles.slide__content}>
               <img
                 src={image.src}
                 alt={image.alt}
@@ -87,7 +83,11 @@ const MV = () => {
                 loading="lazy"
               />
               <div className={styles.slide__overlay}>
-                <div className={styles.slide__text}>
+                <div 
+                  className={styles.slide__text}
+                  onClick={() => handleSlideClick(image.title, image.description)}
+                  style={{ cursor: 'pointer' }}
+                >
                   <h1 className={styles.slide__title}>{image.title}</h1>
                   <p className={styles.slide__description}>{image.description}</p>
                 </div>

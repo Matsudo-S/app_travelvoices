@@ -5,6 +5,7 @@ import React from 'react'
 import styles from './footer.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faXTwitter, faLine } from '@fortawesome/free-brands-svg-icons'
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { 
   faShield, 
   faGift, 
@@ -36,10 +37,10 @@ export const footerSocialItems: NavigationItem[] = [
 ]
 
 // SNSアイコンデータを定義
-export const footerSocialIcons = {
-  instagram: faInstagram,
-  x: faXTwitter,
-  line: faLine
+export const footerSocialIcons: Record<string, { icon: IconDefinition; color: string }> = {
+  instagram: { icon: faInstagram, color: '#E4405F' },
+  x: { icon: faXTwitter, color: '#ffffff' },
+  line: { icon: faLine, color: '#06C755' }
 }
 
 const Footer = () => {
@@ -112,13 +113,13 @@ const Footer = () => {
         {/* ソーシャルメディアリンク */}
         <div className={styles.footer__social}>
           <Link href="https://instagram.com" className={styles.footer__socialLink} aria-label="Instagram">
-            <FontAwesomeIcon icon={faInstagram} />
+            <FontAwesomeIcon icon={footerSocialIcons.instagram.icon} style={{ color: footerSocialIcons.instagram.color }} />
           </Link>
           <Link href="https://x.com" className={styles.footer__socialLink} aria-label="X (Twitter)">
-            <FontAwesomeIcon icon={faXTwitter} />
+            <FontAwesomeIcon icon={footerSocialIcons.x.icon} style={{ color: footerSocialIcons.x.color }} />
           </Link>
           <Link href="https://line.me" className={styles.footer__socialLink} aria-label="Line">
-            <FontAwesomeIcon icon={faLine} />
+            <FontAwesomeIcon icon={footerSocialIcons.line.icon} style={{ color: footerSocialIcons.line.color }} />
           </Link>
         </div>
       </div>
