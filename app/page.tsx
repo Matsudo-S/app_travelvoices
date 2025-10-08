@@ -2,6 +2,7 @@ import LessonCard from "./components/ui/lesson-card/lesson-card";
 import MV from "./components/ui/mv/MV";
 import Layout from "./components/layout/Layout";
 import HomePrefectureSection from "./components/ui/home-prefecture-section/HomePrefectureSection";
+import FVAnimation from "./components/ui/fv-animation/FVAnimation";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { Database } from "./lib/database.types";
@@ -26,6 +27,7 @@ export default async function Home() {
 
   return (
     <Layout>
+      <FVAnimation />
       <MV />
       <HomePrefectureSection />
       <main className="page-container">

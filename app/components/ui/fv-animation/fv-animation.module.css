@@ -1,0 +1,224 @@
+/* FV Animation Container */
+.fvContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: #000;
+  overflow: hidden;
+}
+
+/* Light background effect */
+.lightBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.4) 30%,
+    rgba(255, 255, 255, 0.1) 60%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.lightVisible {
+  opacity: 1;
+}
+
+/* Shoji doors container */
+.shojiContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Individual shoji doors */
+.shojiLeft,
+.shojiRight {
+  width: 50%;
+  height: 100%;
+  background-image: url("/FV_shoji.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.shojiLeft {
+  transform-origin: right center;
+}
+
+.shojiRight {
+  transform-origin: left center;
+}
+
+/* Doors opening animation */
+.doorsOpen .shojiLeft {
+  transform: translateX(-100%);
+}
+
+.doorsOpen .shojiRight {
+  transform: translateX(100%);
+}
+
+/* Text container */
+.textContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 10;
+}
+
+.textVisible {
+  opacity: 1;
+}
+
+.textContent {
+  /* Background removed - text appears directly in the light */
+  position: relative;
+  animation: textFloat 3s ease-in-out infinite;
+}
+
+.mainText {
+  font-size: clamp(24px, 5vw, 36px);
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+.mainText:first-child {
+  margin-bottom: 8px;
+}
+
+/* Sparkle effects */
+.textContent::before,
+.textContent::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.textContent::before {
+  top: 20%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.textContent::after {
+  bottom: 30%;
+  right: -15%;
+  animation-delay: 0.8s;
+}
+
+/* Additional sparkle elements for more sparkles */
+.mainText::before,
+.mainText::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle 1.8s ease-in-out infinite;
+}
+
+.mainText::before {
+  top: -10px;
+  right: 20%;
+  animation-delay: 0.4s;
+}
+
+.mainText::after {
+  bottom: -10px;
+  left: 25%;
+  animation-delay: 1.2s;
+}
+
+/* Fade out animation */
+.fadeOut {
+  animation: fadeOut 1s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Text floating animation */
+@keyframes textFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Text glow animation */
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.6),
+      0 0 30px rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Sparkle animation */
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mainText {
+    font-size: clamp(20px, 4vw, 28px);
+  }
+}
+
+@media (max-width: 480px) {
+  .mainText {
+    font-size: clamp(18px, 3.5vw, 24px);
+  }
+}
