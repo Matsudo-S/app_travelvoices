@@ -99,7 +99,7 @@ const HomePrefectureSection = () => {
           {/* 地図セクション */}
           <div className={styles.mapSection}>
             <div className={styles.mapHeader}>
-              <h3 className={styles.mapTitle}>お探しの都道府県を選んでください</h3>
+              <h3 className={styles.mapTitle}>気になる都道府県を選択してください</h3>
             </div>
             <div className={styles.mapWrapper}>
               <div className={styles.mapImageHolder}>
