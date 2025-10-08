@@ -11,6 +11,7 @@
 .inner {
   max-width: 1500px;
   margin: 0 auto;
+  padding: 0 15px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -118,11 +119,11 @@
   max-width: 100%;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .grid {
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 65% 35%;
     align-items: start;
-    gap: 36px;
+    gap: 24px;
   }
 }
 
@@ -136,15 +137,17 @@
   max-width: 100%;
   overflow: hidden;
   box-sizing: border-box;
+  display: none; /* Hidden by default for mobile */
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .mapSection {
+    display: block;
     padding: 20px;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .mapSection {
     padding: 24px;
   }
@@ -159,7 +162,7 @@
   text-align: center;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .mapHeader {
     padding: 16px;
     margin-bottom: 24px;
@@ -184,7 +187,7 @@
   box-sizing: border-box;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .mapWrapper {
     padding: 16px;
     margin-bottom: 24px;
@@ -201,7 +204,7 @@
   box-sizing: border-box;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .mapImageHolder {
     min-height: 400px;
   }
@@ -357,6 +360,120 @@
   font-weight: 600;
 }
 
+/* 都道府県選択セクション（1024px以下） */
+.prefectureSection {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 16px;
+  border: 2px solid #e9ecef;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: block; /* Visible by default for mobile */
+}
+
+@media (min-width: 1200px) {
+  .prefectureSection {
+    display: none; /* Hidden on desktop */
+  }
+}
+
+.prefectureHeader {
+  background: rgb(180, 99, 99);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.prefectureTitle {
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 700;
+  margin: 0;
+}
+
+.prefectureGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  background: white;
+  width: 100%;
+}
+
+.regionSection {
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 16px;
+}
+
+.regionSection:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.regionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #495057;
+  margin: 0 0 12px 0;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 4px solid #dc3545;
+}
+
+.prefectureButtons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 120px);
+  gap: 8px;
+  justify-content: start;
+}
+
+.prefectureButtons .prefectureButtonSimple {
+  max-width: 120px;
+}
+
+.prefectureButtonSimple {
+  background: #f8f9fa;
+  color: #495057;
+  border: 2px solid #dee2e6;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.prefectureButtonSimple:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+  transform: translateY(-1px);
+}
+
+.prefectureButtonSimpleSelected {
+  background: #dc3545;
+  color: white;
+  border-color: #dc3545;
+  font-weight: 600;
+}
+
+.prefectureButtonSimpleSelected:hover {
+  background: #c82333;
+  border-color: #c82333;
+}
+
 /* コントロールセクション */
 .controlsSection {
   background: #f8f9fa;
@@ -369,7 +486,7 @@
   box-sizing: border-box;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .controlsSection {
     padding: 20px;
   }
@@ -388,7 +505,7 @@
   width: 100%;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .controls {
     gap: 24px;
   }
@@ -420,7 +537,7 @@
   width: 100%;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1400px) {
   .categoryGrid {
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 12px;

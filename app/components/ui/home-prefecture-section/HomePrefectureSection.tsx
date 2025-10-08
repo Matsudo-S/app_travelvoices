@@ -96,16 +96,16 @@ const HomePrefectureSection = () => {
 
 
         <div className={styles.grid}>
-          {/* 地図セクション */}
+          {/* 地図セクション（1024px以上のみ表示） */}
           <div className={styles.mapSection}>
             <div className={styles.mapHeader}>
               <h3 className={styles.mapTitle}>気になる都道府県を選択してください</h3>
             </div>
             <div className={styles.mapWrapper}>
               <div className={styles.mapImageHolder}>
-                <Image src="/japan-map.png" alt="日本地図（都道府県）" fill priority sizes="(min-width: 768px) 600px, 100vw" className={styles.mapImage} />
+                <Image src="/japan-map.png" alt="日本地図（都道府県）" fill priority sizes="(min-width: 1024px) 600px, 100vw" className={styles.mapImage} />
                 
-                {/* 地域ボタンを地図上に配置 */}
+                {/* 地域ボタンを地図上に配置（1024px以上のみ） */}
                 <div className={styles.regionButtonsOverlay}>
                   {Object.entries(REGIONS).map(([region, prefectures]) => (
                     <div key={region} className={styles.regionGroup}>
@@ -136,6 +136,31 @@ const HomePrefectureSection = () => {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* 都道府県選択セクション（1024px以下のみ表示） */}
+          <div className={styles.prefectureSection}>
+            <div className={styles.prefectureHeader}>
+              <h3 className={styles.prefectureTitle}>気になる都道府県を選択してください</h3>
+            </div>
+            <div className={styles.prefectureGrid}>
+              {Object.entries(REGIONS).map(([region, prefectures]) => (
+                <div key={region} className={styles.regionSection}>
+                  <h4 className={styles.regionTitle}>{region}</h4>
+                  <div className={styles.prefectureButtons}>
+                    {prefectures.map((pref) => (
+                      <button
+                        key={pref}
+                        className={`${styles.prefectureButtonSimple} ${selectedPrefectures.includes(pref) ? styles.prefectureButtonSimpleSelected : ''}`}
+                        onClick={() => togglePrefecture(pref)}
+                      >
+                        {pref}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
