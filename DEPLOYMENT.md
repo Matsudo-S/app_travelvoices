@@ -6,6 +6,7 @@
 
 GitHub リポジトリの Settings > Secrets and variables > Actions で以下のシークレットを設定してください：
 
+#### Vercel 関連
 1. **VERCEL_TOKEN**
    - Vercel ダッシュボード > Settings > Tokens で作成
    - 新しいトークンを作成し、値をコピー
@@ -17,6 +18,15 @@ GitHub リポジトリの Settings > Secrets and variables > Actions で以下�
 3. **PROJECT_ID**
    - Vercel プロジェクトの Settings > General で確認
    - Project ID をコピー
+
+#### Supabase 関連
+4. **NEXT_PUBLIC_SUPABASE_URL**
+   - Supabase ダッシュボード > Settings > API で確認
+   - Project URL をコピー
+
+5. **NEXT_PUBLIC_SUPABASE_ANON_KEY**
+   - Supabase ダッシュボード > Settings > API で確認
+   - anon public キーをコピー
 
 ### 設定手順
 
