@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 import 'swiper/css'
@@ -9,7 +10,8 @@ import 'swiper/css/navigation'
 import styles from './mv.module.css'
 
 const MV = () => {
-  const swiperRef = useRef<any>(null)
+  const swiperRef = useRef<{ swiper: any } | null>(null)
+  const router = useRouter()
 
   const images = [
     {
@@ -34,6 +36,13 @@ const MV = () => {
 
   // ループ用にスライドを複製（slidesPerView: 1.5で安定したループのため）
   const duplicatedImages = [...images, ...images, ...images]
+
+  const handleSlideClick = (title: string, description: string) => {
+    const params = new URLSearchParams()
+    params.set('prefecture', description) // 都道府県
+    params.set('keyword', title) // フリーキーワード
+    router.push(`/search?${params.toString()}`)
+  }
 
   return (
     <section className={styles.mv}>
@@ -66,7 +75,11 @@ const MV = () => {
       >
         {duplicatedImages.map((image, index) => (
           <SwiperSlide key={index}>
-            <div className={styles.slide__content}>
+            <div 
+              className={styles.slide__content}
+              onClick={() => handleSlideClick(image.title, image.description)}
+              style={{ cursor: 'pointer' }}
+            >
               <img
                 src={image.src}
                 alt={image.alt}

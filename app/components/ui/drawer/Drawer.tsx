@@ -11,7 +11,7 @@ interface DrawerProps {
   onClose: () => void
   navigationItems: NavigationItem[]
   socialItems?: NavigationItem[]
-  socialIcons?: any
+  socialIcons?: Record<string, { icon: any; color: string }>
 }
 
 const Drawer = ({ isOpen, onClose, navigationItems, socialItems = [], socialIcons = {} }: DrawerProps) => {

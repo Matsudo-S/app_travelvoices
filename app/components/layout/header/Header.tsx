@@ -23,7 +23,7 @@ const Header = () => {
   const drawerSocialItems = footerSocialItems.filter(item => item.showInDrawer)
   
   // ログイン後のドロワーメニューアイテム
-  const drawerProfileItems = user?.session ? [profileItem] : []
+  const drawerProfileItems = user ? [profileItem] : []
 
   useEffect(() => {
     const supabase = createClientComponentClient()

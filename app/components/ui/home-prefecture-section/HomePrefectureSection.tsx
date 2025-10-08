@@ -4,7 +4,7 @@ import React, { useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import styles from './home-prefecture-section.module.css'
-import { PREFECTURES, CATEGORIES } from '../../../lib/constants'
+import { CATEGORIES } from '../../../lib/constants'
 import Button from '../button/button'
 
 // 地域別都道府県データ
