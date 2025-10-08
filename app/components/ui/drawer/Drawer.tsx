@@ -105,6 +105,7 @@ const Drawer = ({ isOpen, onClose, navigationItems, socialItems = [], socialIcon
               if (item.href.includes('line.me')) iconKey = 'line'
 
               const socialIcon = socialIcons[iconKey]
+              const textClassName = `${styles.drawer__text} ${iconKey === 'line' ? styles.drawer__textUpper : ''}`.trim()
               
               return (
                 <div key={item.href} className={styles.drawer__menuList}>
@@ -117,7 +118,7 @@ const Drawer = ({ isOpen, onClose, navigationItems, socialItems = [], socialIcon
                           style={{ color: socialIcon.color }}
                         />
                       )}
-                      <span className={styles.drawer__text}>{item.mainText}</span>
+                      <span className={textClassName}>{item.mainText}</span>
                     </div>
                   </Link>
                 </div>

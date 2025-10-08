@@ -136,6 +136,10 @@ body.is-drawer-active {
   transition: color 0.3s ease;
 }
 
+.drawer__textUpper {
+  text-transform: uppercase;
+}
+
 .drawer__link:hover .drawer__text {
   color: #333;
 }
