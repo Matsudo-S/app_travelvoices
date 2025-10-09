@@ -8,6 +8,9 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import styles from './mv.module.css'
+import shinjiko from '../../../assets/images/mv/mv_shinjiko_shimane.jpg'
+import izumotaisha from '../../../assets/images/mv/mv_izumotaisha_shimane.jpg'
+import otaruCanal from '../../../assets/images/mv/mv_otatuundga_hokkaido.jpg'
 
 const MV = () => {
   const swiperRef = useRef<{ swiper: any } | null>(null)
@@ -15,21 +18,21 @@ const MV = () => {
 
   const images = [
     {
-      src: 'https://www.kankou-shimane.com/jp/wp-content/uploads/2020/03/890-matsuejo-008--1536x1024.jpg',
-      alt: '松江城',
-      title: '松江城',
-      description: '島根県'
+      src: otaruCanal.src,
+      alt: '小樽運河',
+      title: '小樽運河',
+      description: '北海道'
     },
     {
-      src: 'https://www.kankou-shimane.com/jp/wp-content/uploads/2020/03/0311-sinjiko-002-1.jpg',
-      alt: '宍道湖',
-      title: '宍道湖',
-      description: '島根県'
-    },
-    {
-      src: 'https://www.kankou-shimane.com/jp/wp-content/uploads/2020/03/4102-izumotaisha-004.jpg',
+      src: izumotaisha.src,
       alt: '出雲大社',
       title: '出雲大社',
+      description: '島根県'
+    },
+    {
+      src: shinjiko.src,
+      alt: '宍道湖',
+      title: '宍道湖',
       description: '島根県'
     }
   ]

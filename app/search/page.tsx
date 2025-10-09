@@ -10,6 +10,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const prefectures = prefectureParam ? prefectureParam.split(',') : []
   const category = resolvedSearchParams?.category || ''
   const keyword = resolvedSearchParams?.keyword || ''
+
   return (
     <Layout>
       <div style={{ padding: '120px 20px 80px', minHeight: '100vh', backgroundColor: '#f8f9fa' }}>
@@ -25,17 +26,17 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
               </div>
             )}
             <div style={{ marginBottom: '2rem' }}>
-              <input 
-                type="text" 
-                placeholder="目的地やキーワードで検索..." 
+              <input
+                type="text"
+                placeholder="目的地やキーワードで検索..."
                 defaultValue={keyword}
-                style={{ 
-                  width: '100%', 
-                  padding: '1rem', 
-                  fontSize: '1.1rem', 
-                  border: '2px solid #ddd', 
+                style={{
+                  width: '100%',
+                  padding: '1rem',
+                  fontSize: '1.1rem',
+                  border: '2px solid #ddd',
                   borderRadius: '8px',
-                  outline: 'none'
+                  outline: 'none',
                 }}
               />
             </div>
