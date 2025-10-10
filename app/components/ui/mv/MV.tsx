@@ -89,9 +89,8 @@ const MV = () => {
                 <div 
                   className={styles.slide__text}
                   onClick={() => handleSlideClick(image.title, image.description)}
-                  style={{ cursor: 'pointer' }}
                 >
-                  <h1 className={styles.slide__title}>{image.title}</h1>
+                  <h2 className={styles.slide__title}>{image.title}</h2>
                   <p className={styles.slide__description}>{image.description}</p>
                 </div>
               </div>

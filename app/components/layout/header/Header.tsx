@@ -90,7 +90,7 @@ const Header = () => {
               <div className={styles['header__item-sub']}>使い方</div>
             </span>
           </Link>
-          <Link href="/plan" className={`${styles['header__link']} ${styles['header__link--underline']}`}>
+          <Link href="/price" className={`${styles['header__link']} ${styles['header__link--underline']}`}>
             <span>
               <div className={styles['header__item-main']}>price</div>
               <div className={styles['header__item-sub']}>料金</div>
