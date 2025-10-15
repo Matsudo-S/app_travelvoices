@@ -2,23 +2,27 @@
   position: relative;
   width: 100%;
   border-radius: 12px;
-  padding: 24px 32px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  padding: 0.9rem 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   color: #fff;
-  background: linear-gradient(90deg, #4a5568 0%, #718096 50%, #4a5568 100%);
-  background-size: 200% 100%;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25),
-    0 12px 24px rgba(15, 23, 42, 0.35);
+  background: linear-gradient(120deg, #4b5563 0%, #70829d 50%, #2f3a4b 100%);
+  background-size: 220% 100%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 18px 30px rgba(17, 24, 39, 0.45);
   transition: background-position 0.3s ease-out, transform 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.25s ease;
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
 }
 
 .triggerButton:hover {
   background-position: 100% 0;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    0 16px 32px rgba(15, 23, 42, 0.45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 22px 38px rgba(15, 23, 42, 0.55);
 }
 
 .triggerButton::after {
@@ -27,9 +31,9 @@
   inset: 0;
   border-radius: inherit;
   background: radial-gradient(
-    circle at 20% 20%,
+    circle at 25% 25%,
     rgba(255, 255, 255, 0.35),
-    transparent 45%
+    transparent 48%
   );
   opacity: 0;
   transition: opacity 0.25s ease;
@@ -44,24 +48,27 @@
   position: relative;
   width: 100%;
   border-radius: 12px;
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  padding: 0.9rem 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   color: #fff;
-  background: linear-gradient(90deg, #2d3a4d 0%, #4a5c78 50%, #2d3a4d 100%);
-  background-size: 200% 100%;
+  background: linear-gradient(120deg, #2e3848 0%, #46566c 50%, #1b2533 100%);
+  background-size: 220% 100%;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0 12px 22px rgba(15, 23, 42, 0.32);
+    0 16px 28px rgba(17, 24, 39, 0.4);
   transition: background-position 0.3s ease-out, transform 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.25s ease;
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logoutButton:hover {
   background-position: 100% 0;
   transform: translateY(-1px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    0 16px 30px rgba(15, 23, 42, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    0 20px 36px rgba(15, 23, 42, 0.5);
 }
 
 .logoutButton::after {
@@ -70,9 +77,9 @@
   inset: 0;
   border-radius: inherit;
   background: radial-gradient(
-    circle at 15% 15%,
-    rgba(255, 255, 255, 0.25),
-    transparent 45%
+    circle at 18% 18%,
+    rgba(255, 255, 255, 0.28),
+    transparent 48%
   );
   opacity: 0;
   transition: opacity 0.25s ease;
@@ -89,53 +96,154 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  background: rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(2px);
+  padding: 32px;
+  background: rgba(10, 15, 25, 0.55);
+  backdrop-filter: blur(6px);
   z-index: 1200;
 }
 
 .panel {
-  width: min(360px, 100%);
-  background: #fff;
-  border-radius: 16px;
-  padding: 24px;
+  width: min(420px, 100%);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(248, 250, 252, 0.98)
+  );
+  border-radius: 24px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 30px 60px -20px rgba(15, 23, 42, 0.35);
+  gap: 20px;
+  box-shadow: 0 35px 80px -25px rgba(15, 23, 42, 0.4),
+    0 10px 30px -15px rgba(15, 23, 42, 0.2);
+  border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-.title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #0f172a;
-}
-
-.options {
+.panelHeader {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
+.panelBadge {
+  align-self: flex-start;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #475569;
+  background: rgba(148, 163, 184, 0.18);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: 0.04em;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 .option {
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 12px 16px;
-  text-align: left;
-  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.9);
   font-weight: 500;
-  transition: background 0.2s ease, transform 0.1s ease;
+  color: #0f172a;
+  box-shadow: 0 10px 25px -20px rgba(15, 23, 42, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .option:hover {
-  background: #f8fafc;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px -20px rgba(15, 23, 42, 0.35);
+  border-color: rgba(59, 130, 246, 0.35);
+  background: rgba(248, 250, 252, 0.95);
 }
 
 .option:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.optionIconWrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(226, 232, 240, 0.6);
+}
+
+.optionIcon {
+  font-size: 1.25rem;
+  color: #1e293b;
+}
+
+.optionText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.optionTitle {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.optionDescription {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.optionArrow {
+  margin-left: auto;
+  color: #cbd5f5;
+}
+
+.optionGoogle .optionIconWrap {
+  background: linear-gradient(135deg, #1fb6ff, #38bdf8);
+}
+
+.optionGoogle .optionIcon {
+  color: #e0f2fe;
+}
+
+.optionGithub .optionIconWrap {
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+}
+
+.optionGithub .optionIcon {
+  color: #000000;
+}
+
+.optionEmail .optionIconWrap {
+  background: linear-gradient(135deg, #fbbf24, #f97316);
+}
+
+.optionEmail .optionIcon {
+  color: #ffffff;
 }
 
 .actions {
@@ -149,6 +257,7 @@
   color: #64748b;
   font-size: 0.9rem;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .cancel:hover {

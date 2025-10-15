@@ -2,15 +2,40 @@
 
 import { useState } from 'react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGoogle, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 import { Button } from '@/components/ui/button'
 import { useToast } from '@/hooks/useToast'
 import Toast from '@/components/ui/toast/toast'
 import styles from '@/assets/css/pages/login-button.module.css'
 
-const OAUTH_PROVIDERS = [
-  { key: 'google', label: 'Googleでログイン' },
-  { key: 'github', label: 'GitHubでログイン' },
+type OAuthProvider = 'google' | 'github'
+
+type ProviderOption = {
+  key: OAuthProvider
+  label: string
+  description: string
+  icon: typeof faGoogle
+  className: string
+}
+
+const OAUTH_PROVIDERS: ProviderOption[] = [
+  {
+    key: 'google',
+    label: 'Googleでログイン',
+    description: 'Gmailアカウントで素早くサインイン',
+    icon: faGoogle,
+    className: styles.optionGoogle,
+  },
+  {
+    key: 'github',
+    label: 'GitHubでログイン',
+    description: '開発者アカウントでアクセス',
+    icon: faGithub,
+    className: styles.optionGithub,
+  },
 ]
 
 const LoginButton = () => {
@@ -19,7 +44,7 @@ const LoginButton = () => {
   const [isSelecting, setIsSelecting] = useState(false)
   const [isProcessing, setIsProcessing] = useState(false)
 
-  const handleProviderSelect = async (provider: 'google' | 'github') => {
+  const handleProviderSelect = async (provider: OAuthProvider) => {
     if (isProcessing) return
     setIsProcessing(true)
 
@@ -81,23 +106,47 @@ const LoginButton = () => {
       {isSelecting && (
         <div className={styles.overlay} onClick={handleOverlayClick}>
           <div className={styles.panel}>
-            <div className={styles.title}>ログイン方法を選択</div>
+            <div className={styles.panelHeader}>
+              <span className={styles.panelBadge}>Sign in</span>
+              <div className={styles.title}>ログイン方法を選択</div>
+              <p className={styles.subtitle}>
+                普段お使いのアカウントを選んで、すぐに旅のコンテンツにアクセスできます。
+              </p>
+            </div>
 
             <div className={styles.options}>
               {OAUTH_PROVIDERS.map((provider) => (
                 <button
                   key={provider.key}
                   type="button"
-                  onClick={() => handleProviderSelect(provider.key as 'google' | 'github')}
+                  onClick={() => handleProviderSelect(provider.key)}
                   disabled={isProcessing}
-                  className={styles.option}
+                  className={`${styles.option} ${provider.className}`}
                 >
-                  {provider.label}
+                  <span className={styles.optionIconWrap}>
+                    <FontAwesomeIcon icon={provider.icon} className={styles.optionIcon} />
+                  </span>
+                  <span className={styles.optionText}>
+                    <span className={styles.optionTitle}>{provider.label}</span>
+                    <span className={styles.optionDescription}>{provider.description}</span>
+                  </span>
+                  <FontAwesomeIcon icon={faChevronRight} className={styles.optionArrow} />
                 </button>
               ))}
 
-              <button type="button" onClick={handleEmailSignIn} className={styles.option}>
-                メールアドレスでログイン
+              <button
+                type="button"
+                onClick={handleEmailSignIn}
+                className={`${styles.option} ${styles.optionEmail}`}
+              >
+                <span className={styles.optionIconWrap}>
+                  <FontAwesomeIcon icon={faEnvelope} className={styles.optionIcon} />
+                </span>
+                <span className={styles.optionText}>
+                  <span className={styles.optionTitle}>メールアドレスでログイン</span>
+                  <span className={styles.optionDescription}>ワンタイムリンクをメールでお送りします</span>
+                </span>
+                <FontAwesomeIcon icon={faChevronRight} className={styles.optionArrow} />
               </button>
             </div>
 
