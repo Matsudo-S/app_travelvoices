@@ -1,0 +1,154 @@
+.triggerButton {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  color: #f8fafc;
+  background: linear-gradient(135deg, #1f2737 0%, #4b5c78 50%, #1f2737 100%);
+  background-size: 200% 200%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 12px 24px rgba(15, 23, 42, 0.35);
+  transition: background-position 0.35s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.triggerButton:hover {
+  background-position: 100% 0;
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 16px 32px rgba(15, 23, 42, 0.45);
+}
+
+.triggerButton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 20% 20%,
+    rgba(255, 255, 255, 0.35),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.triggerButton:hover::after {
+  opacity: 1;
+}
+
+.logoutButton {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  color: #f8fafc;
+  background: linear-gradient(135deg, #2d3a4d 0%, #0f172a 50%, #2d3a4d 100%);
+  background-size: 200% 200%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 12px 22px rgba(15, 23, 42, 0.32);
+  transition: background-position 0.35s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.logoutButton:hover {
+  background-position: 100% 0;
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 16px 30px rgba(15, 23, 42, 0.4);
+}
+
+.logoutButton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 15% 15%,
+    rgba(255, 255, 255, 0.25),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.logoutButton:hover::after {
+  opacity: 1;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 1200;
+}
+
+.panel {
+  width: min(360px, 100%);
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 30px 60px -20px rgba(15, 23, 42, 0.35);
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  text-align: left;
+  background: #fff;
+  font-weight: 500;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.option:hover {
+  background: #f8fafc;
+  transform: translateY(-1px);
+}
+
+.option:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cancel {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.cancel:hover {
+  color: #1f2937;
+  text-decoration: underline;
+}

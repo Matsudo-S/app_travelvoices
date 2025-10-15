@@ -11,7 +11,8 @@ export default function AuthProvider() {
     }
   }, [])
 
-  useAuthEffect()
+  // Stripe顧客作成のフック stripe連携後にコメントアウト外す
+  // useAuthEffect()
   
   return null // このコンポーネントは何もレンダリングしない
 }

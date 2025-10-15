@@ -34,7 +34,7 @@ export const useAuthEffect = () => {
 
         // 既にStripe顧客IDが設定されているかチェック
         const { data: profile, error: profileError } = await supabase
-          .from('profile')
+          .from('profiles')
           .select('stripe_customer')
           .eq('id', session.user.id)
           .single()

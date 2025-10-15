@@ -5,7 +5,7 @@ import { createServerComponentClient, SupabaseClient } from "@supabase/auth-help
 import { cookies } from "next/headers";
 import { Database } from "../lib/database.types";
 import SubscriptionButton from "@/components/layout/checkout/SubscriptionButton";
-import LoginButton from "../pricing/LoginButton";
+import LoginButton from '@/components/ui/login-button/LoginButton';
 import Link from "next/link";
 
 const getAllPlans = async (): Promise<Plan[]> => {
@@ -73,13 +73,15 @@ const PricingPage = async () => {
               <p className={styles['pricing-price']}>
                 {plan.price}円 / {plan.interval}
               </p>
-              <button className={styles['pricing-button']}>
+              <div className={styles['pricing-actions']}>
                 {showCreateAccountButton && <LoginButton />}
-                {showSubscriptionButton && <SubscriptionButton planId={plan.id}>サブスクリプション契約をする</SubscriptionButton>}
+                {showSubscriptionButton && (
+                  <SubscriptionButton planId={plan.id}>サブスクリプション契約をする</SubscriptionButton>
+                )}
                 {showManageSubscriptionButton && (
                   <Link href="/dashboard">サブスクリプションを管理する</Link>
                 )}
-              </button>
+              </div>
             </div>
           ))}
         </div>

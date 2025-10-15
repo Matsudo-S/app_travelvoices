@@ -11,26 +11,28 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-function Button({ 
-  children, 
-  href, 
-  onClick, 
+function Button({
+  children,
+  href,
+  onClick,
   variant = 'primary',
   className = '',
-  disabled = false
+  disabled = false,
 }: ButtonProps) {
-  const buttonClass = `${styles.button} ${styles[variant]} ${className ? styles[className] : ''}`;
+  const computedClassName = [styles.button, styles[variant], className]
+    .filter(Boolean)
+    .join(' ')
 
   if (href) {
     return (
-      <Link href={href} className={buttonClass}>
+      <Link href={href} className={computedClassName}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button className={buttonClass} onClick={onClick} disabled={disabled}>
+    <button className={computedClassName} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

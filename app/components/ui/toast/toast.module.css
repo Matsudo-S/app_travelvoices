@@ -32,3 +32,7 @@
 .toast.info {
   background: #3b82f6;
 }
+
+.toast.error {
+  background: #ef4444;
+}

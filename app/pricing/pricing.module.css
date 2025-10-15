@@ -40,21 +40,16 @@
   margin-bottom: 1.5rem;
 }
 
-.pricing-button {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.pricing-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.pricing-button:hover {
-  transform: scale(1.03);
-  opacity: 0.8;
+@media (min-width: 768px) {
+  .pricing-actions {
+    align-items: stretch;
+  }
 }
 
 /* レスポンシブ対応 */
