@@ -5,6 +5,11 @@
   --inner: 1080px;
 }
 
+html,
+body {
+  min-width: 390px;
+}
+
 /* フォントサイズ設定 */
 /* スマホファースト */
 /* html {
