@@ -13,11 +13,18 @@ body.is-drawer-active {
   border-radius: 50%;
   width: 80px;
   height: 80px;
-  top: 5px;
+  top: 0px;
   right: 0;
   transform: scale(0.02);
   transition: all 0.3s ease-out;
   backface-visibility: hidden;
+}
+
+/* デスクトップでの高さ調整 */
+@media (min-width: 768px) {
+  .drawerMenu {
+    top: 5px;
+  }
 }
 
 .drawerMenu.is-open {

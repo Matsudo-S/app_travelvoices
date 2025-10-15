@@ -56,6 +56,15 @@ const Drawer = ({ isOpen, onClose, navigationItems, socialItems = [], socialIcon
     onClose()
   }
 
+  const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLElement
+    if (target.closest(`.${styles.drawer__link}`)) {
+      return
+    }
+
+    onClose()
+  }
+
   // カテゴリごとにナビゲーションアイテムを分類
   const serviceItems = navigationItems.filter(item => 
     ['/about', '/search', '/create-post', '/price'].includes(item.href)
@@ -68,7 +77,7 @@ const Drawer = ({ isOpen, onClose, navigationItems, socialItems = [], socialIcon
   )
 
   return (
-    <div className={`${styles.drawerMenu} ${isOpen ? styles['is-open'] : ''}`}>
+    <div className={`${styles.drawerMenu} ${isOpen ? styles['is-open'] : ''}`} onClick={handleOverlayClick}>
       <div className={styles.drawerMenu__inner}>
         <nav className={styles.drawerMenu__lists}>
           {/* サービスカテゴリ */}
